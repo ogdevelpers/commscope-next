@@ -6,6 +6,7 @@ import Footer from "@/components/Footer/Footer";
 export default function Home() {
   return (
     <>
+    <div className={styles.container}>
       <Navbar />
       <section className={styles.heroSection}>
         <div className={styles.heroContentContainer}>
@@ -72,9 +73,62 @@ export default function Home() {
           </div>
         </section>
       </section>
-      <section></section>
-      <section></section>
+      <section className={styles.itenarySection}>
+
+
+
+      </section>
+      <section className={styles.directionSection}>
+
+        <section className={styles.directionSection}>
+          <div className={styles.directionContainer}>
+            <div className={styles.venueCard}>
+              <div className={styles.venueHeader}>
+                <span className={styles.venueLabel}>VENUE</span>
+              </div>
+
+              <div className={styles.venueInfo}>
+                <h2 className={styles.venueTitle}>THE PENINSULA</h2>
+                <p className={styles.venueLocation}>BANGKOK, THAILAND</p>
+              </div>
+
+              <button className={styles.directionButton}>
+                GET DIRECTION
+              </button>
+            </div>
+
+            <div className={styles.contactInfo}>
+              <p className={styles.contactText}>
+                For visa requirements and any other requests related to the conference and logistics on ground, please do not hesitate to contact:
+              </p>
+
+              <div className={styles.contactDetails}>
+                <div className={styles.contactItem}>
+                  <div className={styles.contactIcon}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" fill="currentColor" />
+                      <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" fill="currentColor" />
+                    </svg>
+                  </div>
+                  <span className={styles.contactLabel}>Commscope Team</span>
+                </div>
+
+                <div className={styles.contactItem}>
+                  <div className={styles.contactIcon}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" strokeWidth="2" fill="none" />
+                      <polyline points="22,6 12,13 2,6" stroke="currentColor" strokeWidth="2" fill="none" />
+                    </svg>
+                  </div>
+                  <span className={styles.contactLabel}>Nikita.Kandath@commscope.com</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
       <Footer />
+      </div>
     </>
   );
 }

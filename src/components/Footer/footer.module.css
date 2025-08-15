@@ -1,6 +1,5 @@
 .footer{
     padding:2rem;
-    padding-top: 0;
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -11,9 +10,8 @@
     font-family: 'Univia';
     font-weight: 400;
     font-style: Regular;
-    font-size: 16.61px;
+    font-size: 1rem;
     line-height: 100%;
     letter-spacing: 0%;
     color: #515151;
-
 }

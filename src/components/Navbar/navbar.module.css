@@ -112,6 +112,10 @@ background: linear-gradient(90deg, #282AA7 0%, #0071BA 13.73%, #02ADF0 27.91%, #
     .nav {
         padding: 1rem 2rem;
     }
+
+    .navRegister{
+        display:none;
+    }
     
     .navLinks ul {
         gap: 2rem;

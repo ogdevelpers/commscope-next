@@ -9,6 +9,9 @@
     color: white;
     position: relative;
     z-index: 1000;
+    min-width: 100vw;
+    position:fixed;
+    top:0;
 }
 
 .navLogo {

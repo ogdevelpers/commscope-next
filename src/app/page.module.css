@@ -26,7 +26,7 @@
     justify-content: center;
     align-items: flex-end;
     gap:1.5rem;
-    margin-right:3rem;
+    margin-right:5rem;
 }
 
 .heroContent1, .heroContent2{
@@ -100,7 +100,7 @@
 /* Add this to your page.module.css */
 
 .messageSection {
-    padding: 80px 60px;
+    padding: 1rem 60px;
     background-color: #ffffff;
     display: flex;
     justify-content: center;
@@ -177,13 +177,13 @@
     min-height:658px;
     display: flex;
     flex-direction: column;
-    gap:2rem;
+    gap:4rem;
 }
 
 .itenaryContainer{
     display:flex;
     flex-direction: column;
-    margin-left:3rem;
+    margin-left:4rem;
     color: white;
     margin-top:2rem;
     align-items: flex-start;

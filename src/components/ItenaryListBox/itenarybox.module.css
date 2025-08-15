@@ -2,19 +2,129 @@
     color:white;
     display:flex;
     flex-direction: column;
-    margin-left:3rem ;
+    margin-left:4rem ; 
+}
+
+.itenaryBox{
+    display:flex;
+    flex-direction: column;
+    gap:2rem;
 }
 
 .itenaryPunchBox{
     display: flex;
-    justify-content: space-evenly;
+    gap:3rem;
     overflow-x: auto;
+}
+
+.itenaryPunchItem:first-child {
+    margin-left: 0; 
 }
 
 .itenaryPunchKaBox{
 
 }
 
-.itenaryPunchItem{
+.itenaryListBox{
+    display:flex;
+    flex-direction: column; 
+}
 
+.itenaryPunchItem{
+    display:flex;
+    flex-direction: column;
+    gap:0.8rem;
+    min-width: 240px; 
+    border-bottom: 4px solid #383838; 
+}
+
+.itenaryPunchItemActive {
+    border-bottom: 3px solid transparent; /* Thickness of the border */
+    border-image: linear-gradient(
+        90deg, 
+        #282AA7 0%, 
+        #0071BA 13.73%, 
+        #02ADF0 27.91%, 
+        #00A9B4 44.48%, 
+        #00A562 58.43%, 
+        #2BB056 72.17%, 
+        #C9DA2C 86.34%, 
+        #FDC111 100%
+    ) 1;
+}
+
+
+.itenaryPunchDate{ 
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 14px;  
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #515151;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    max-width: 143px;
+    min-width: 140px;
+}
+
+.itenaryPunchDetails{
+    padding-bottom: 0.7rem;
+}
+
+.itenaryPunchDay,.itenaryPunchTitle{
+    font-family: 'Univia';
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 1.1rem; 
+    line-height: 150%;
+    letter-spacing: 0%;
+    vertical-align: middle; 
+}
+
+.itenaryPunchDayActive, .itenaryPunchTitleActive{
+    color: #F8C313;
+}
+
+.itenaryListItemDiv{
+    display:flex; 
+    gap:1rem;
+    align-items: center;
+    width:100%;
+    border-bottom:1px solid #383838;
+    padding:1.5rem 0;
+}
+
+.itenaryTimeDisplay, .itenaryDetails{ 
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 18px; 
+    line-height: 150%;
+    letter-spacing: 0%;
+    vertical-align: middle;
+
+}
+
+
+.itenaryTimelineLine {
+    height: 2px;
+    background: white;
+    width: 120px;
+    flex-shrink: 0;
+    position: relative;
+} 
+
+/* Responsive adjustments */
+@media (max-width: 768px) { 
+    .itenaryTimelineLine {
+        width: 80px;
+        align-self: flex-start;
+        margin-left: 1rem;
+    }
+}
+
+@media (max-width: 480px) { 
+    .itenaryTimelineLine {
+        width: 60px;
+    }
 }

@@ -85,3 +85,115 @@
     letter-spacing: 0%;
     text-align: right;
 }
+
+/* Add this to your page.module.css */
+
+.messageSection {
+    padding: 80px 60px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.messageContainer {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.messageText {
+    font-family: 'Univia', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: #333333;
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.messageHighlight {
+    font-family: 'Univia', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: #333333;
+}
+
+.messageList {
+    margin: 24px 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.messageListItem {
+    font-family: 'Univia', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: #333333;
+    margin-bottom: 12px;
+    padding-left: 24px;
+    position: relative;
+}
+
+.messageListItem::before {
+    content: '•';
+    color: #0099cc;
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.messageSignature {
+    margin-top: 40px;
+}
+
+.messageSignature .messageText {
+    margin-bottom: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .messageSection {
+        padding: 60px 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .messageSection {
+        padding: 40px 20px;
+    }
+    
+    .messageContainer {
+        max-width: 100%;
+    }
+    
+    .messageText,
+    .messageHighlight,
+    .messageListItem {
+        font-size: 15px;
+        line-height: 160%;
+    }
+}
+
+@media (max-width: 480px) {
+    .messageSection {
+        padding: 30px 15px;
+    }
+    
+    .messageText,
+    .messageHighlight,
+    .messageListItem {
+        font-size: 14px;
+        line-height: 160%;
+    }
+    
+    .messageListItem {
+        padding-left: 20px;
+    }
+}

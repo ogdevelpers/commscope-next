@@ -2,4 +2,19 @@
     color:white;
     display:flex;
     flex-direction: column;
+    margin-left:3rem ;
+}
+
+.itenaryPunchBox{
+    display: flex;
+    justify-content: space-evenly;
+    overflow-x: auto;
+}
+
+.itenaryPunchKaBox{
+
+}
+
+.itenaryPunchItem{
+
 }

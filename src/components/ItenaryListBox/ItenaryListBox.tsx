@@ -5,11 +5,11 @@ export default function ItenaryListBox() {
     <section className={styles.itenaryComponent}>
         <div className={styles.itenaryBox}>
           <div className={styles.itenaryPunchBox}>
-            {[1,2,3,4].map(()=>{
+            {[1,2,3,4].map((item,index)=>{
                     return (
-                        <>
-                            <ItenaryPunch/>
-                        </>
+                        <div className={styles.itenaryPunchKaBox} key={index}>
+                        <ItenaryPunch /> 
+                        </div>
                     )
                 }
             )}
@@ -22,7 +22,6 @@ export default function ItenaryListBox() {
     </section>
   )
 }
-
 
 const ItenaryPunch = ()=>{
     return (

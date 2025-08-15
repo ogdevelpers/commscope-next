@@ -88,8 +88,7 @@ export default function Home() {
 
       </section>
       <section className={styles.directionSection}>
-
-        <section className={styles.directionSection}>
+        <section className={styles.directionSectionInner}>
           <div className={styles.directionContainer}>
             <div className={styles.venueCard}>
               <div className={styles.venueHeader}>

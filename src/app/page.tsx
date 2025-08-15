@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
+import ItenaryListBox from "@/components/ItenaryListBox/ItenaryListBox";
 
 export default function Home() {
   return (
@@ -74,8 +75,16 @@ export default function Home() {
         </section>
       </section>
       <section className={styles.itenarySection}>
+        <div className={styles.itenaryContainer}>
+          <div className={styles.itenaryTitleBox}>
+            <div className={styles.agenda}>AGENDA</div>
+            <div className={styles.itenaryTitle}>EVENT ITENARY</div>
+          </div>
+        </div>
 
-
+        <section className={styles.itenaryPunchComponentSection}>
+          <ItenaryListBox />
+        </section>
 
       </section>
       <section className={styles.directionSection}>

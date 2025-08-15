@@ -1,0 +1,189 @@
+/* navbar.module.css */
+
+.nav {
+    background-color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    color: white;
+    position: relative;
+    z-index: 1000;
+}
+
+.navLogo {
+    display: flex;
+    align-items: center;
+}
+
+.navLogo img {
+    height: 21px;
+    width: auto;
+}
+
+.navLinks {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.navLinks ul {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.navLinks li {
+    font-family: 'Univia Pro', 'Univia', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Active state for HOME */
+.navLinks li:first-child {
+    color: #FDC111;
+    border-bottom: 3px solid #FDC111;
+    padding-bottom: 0.7rem;
+}
+
+.navLinks li:hover:not(:first-child) {
+    color: #FDC111;
+}
+
+.navRegister {
+    display: flex;
+    align-items: center;
+}
+
+.registerButton {
+background: linear-gradient(90deg, #282AA7 0%, #0071BA 13.73%, #02ADF0 27.91%, #00A9B4 44.48%, #00A562 58.43%, #2BB056 72.17%, #C9DA2C 86.34%, #FDC111 100%);
+    border: none;
+    border-radius: 50px;
+    padding: 12px 32px;
+    color: white;
+    font-family: 'Univia Pro', 'Univia', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    min-width: 120px;
+}
+
+.registerButton::after {
+    content: 'REGISTER';
+}
+
+.registerButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #3367d6 0%, #2d8f3f 30%, #f9ab00 70%, #d33b01 100%);
+}
+
+/* Mobile Menu Toggle */
+.menuToggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.menuToggle span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    transition: 0.3s;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .nav {
+        padding: 1rem 2rem;
+    }
+    
+    .navLinks ul {
+        gap: 2rem;
+    }
+    
+    .navLinks li {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        padding: 1rem;
+        position: relative;
+    }
+    
+    .navLinks {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #000000;
+        z-index: 999;
+        border-top: 1px solid #333;
+    }
+    
+    .navLinks.active {
+        display: flex;
+    }
+    
+    .navLinks ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 2rem 0;
+        gap: 1.5rem;
+    }
+    
+    .navLinks li {
+        text-align: center;
+        padding: 1rem 0;
+        border-bottom: none;
+    }
+    
+    .navLinks li:first-child {
+        border-bottom: none;
+        color: #FDC111;
+    }
+    
+    .menuToggle {
+        display: flex;
+    }
+    
+    .registerButton {
+        padding: 10px 20px;
+        font-size: 14px;
+        min-width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav {
+        padding: 0.8rem;
+    }
+    
+    .navLogo img {
+        height: 35px;
+    }
+    
+    .registerButton {
+        padding: 8px 16px;
+        font-size: 12px;
+        min-width: 90px;
+    }
+}

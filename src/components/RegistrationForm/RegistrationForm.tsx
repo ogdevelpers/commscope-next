@@ -150,14 +150,14 @@ export default function CommScopeRegistrationForm() {
     passportUrl: ''
   });
   const [canSubmit, setCanSubmit] = useState(false);
-  const [uploadError, setUploadError] = useState('');
-  const [countryCode, setCountryCode] = useState('US'); 
+  const [uploadError, setUploadError] = useState(''); 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploadSuccess, setUploadSuccess]=  useState(false);
   const [submitError, setSubmitError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   
-      const router = useRouter();  
+  const router = useRouter();  
 
   const handleInputChange = (e:any) => {
     const { name, value } = e.target;
@@ -203,6 +203,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     // Create FormData for file upload
     const uploadFormData = new FormData();
     uploadFormData.append('file', file);
+    setIsUploading(true);
 
     // Upload file to /api/upload
     const uploadResponse = await fetch('/api/upload', {
@@ -246,7 +247,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
       
     } else {
       throw new Error('Upload failed - no data returned');
-    }
+    } 
 
   } catch (error) {
     console.error('Upload error:', error);
@@ -263,6 +264,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
       fileInputRef.current.value = '';
     }
   } finally {  
+    setIsUploading(false)
   }
 };
 
@@ -272,6 +274,11 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
   
   // Clear previous errors
   setSubmitError('');
+
+  if(!uploadSuccess){
+    setSubmitError('Please upload passport file');
+    return;
+  }
   
   // Validate required fields
   if (!formData.firstName?.trim() || !formData.lastName?.trim() || !formData.email?.trim()) {
@@ -651,6 +658,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
                       (Jpeg/png/pdf)
                     </div>
                   </>)}
+                  {isUploading && "Uploading File, please wait"}
                 </label>
  
               </div>
@@ -660,8 +668,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
             <button
               type="button"
               onClick={handleSubmit}
-              className={styles.submitButton}
-              disabled= {!uploadSuccess}
+              className={styles.submitButton} 
             >
               SUBMIT
             </button>

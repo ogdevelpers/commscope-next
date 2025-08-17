@@ -124,12 +124,20 @@
 
     .heroContentContainer {
         align-items: flex-start;
-        gap: 1.5rem;
+        gap: 2rem;
     }
 
     .heroContent1,
     .heroContent2 {
-        align-items: flex-start;
+        align-items: flex-start;  
+    }
+
+    .heroNotes{
+        gap:1rem;
+    }
+
+    .heroNotes1, .heroNotes2{
+        gap:0.5rem;
     }
 
 }

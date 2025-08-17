@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './submission.module.css'; 
 import { ThankYouSection } from "@/components/ThankYou/ThankYou"; 
+import Navbar from "@/components/Navbar/Navbar";
 
 export default function Page() {
   const searchParams = useSearchParams();
@@ -20,6 +21,7 @@ export default function Page() {
     return (
         <>
             <div className={styles.container}> 
+                <Navbar />
                 <section className={styles.thankYouSection}>
                     < ThankYouSection name={name} />
                 </section>

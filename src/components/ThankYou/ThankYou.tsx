@@ -7,8 +7,16 @@ interface ThankYouSectionProps {
 
 export const ThankYouSection: React.FC<ThankYouSectionProps> = ({ name }: ThankYouSectionProps) => {
   
-  const onDownloadCalendar = ()=>{};
-  const onBackToHome= ()=>{};
+  const onDownloadCalendar = ()=>{
+    const link = document.createElement("a");
+    link.href = "/Save_the_Date-CommScope_Technology_Forum_2025.ics"; 
+    link.download = "Save_the_Date-CommScope_Technology_Forum_2025.ics";
+    link.click();
+  };
+  const onBackToHome= ()=>{
+    window.location.href =
+      "https://commscope.msdplus.com/CommScope-Technology-Forum-2025/";
+  };
 
   return (
     <div className={styles.thankYouContainer}>

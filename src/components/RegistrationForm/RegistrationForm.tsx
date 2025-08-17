@@ -158,6 +158,7 @@ export default function CommScopeRegistrationForm() {
     "success" | "error" | null
   >(null);
   const [submissionMessage, setSubmissionMessage] = useState("");
+  const [uploadSuccess, setUploadSuccess] = useState(false);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -179,18 +180,15 @@ export default function CommScopeRegistrationForm() {
   };
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files) return;
-    const file = e.target.files[0];
+    const file = e.target.files?.[0];
 
     if (!file) return;
 
-    // Validate file type
-    const allowedTypes = [
-      "image/jpeg",
-      "image/jpg",
-      "image/png",
-      "application/pdf",
-    ];
+    // Clear previous errors
+    setUploadError("");
+
+    // Validate file type - using standard MIME types
+    const allowedTypes = ["image/jpeg", "image/png", "application/pdf"];
     if (!allowedTypes.includes(file.type)) {
       setUploadError("Please select a valid file type (JPEG, PNG, or PDF)");
       return;
@@ -203,8 +201,6 @@ export default function CommScopeRegistrationForm() {
       return;
     }
 
-    setUploadError("");
-
     try {
       // Create FormData for file upload
       const uploadFormData = new FormData();
@@ -216,21 +212,33 @@ export default function CommScopeRegistrationForm() {
         body: uploadFormData,
       });
 
-      const uploadResult: UploadResponse = await uploadResponse.json();
-
+      // Check if response is ok before parsing JSON
       if (!uploadResponse.ok) {
-        throw new Error(uploadResult.error || "Upload failed");
+        const errorText = await uploadResponse.text();
+        let errorMessage = "Upload failed";
+
+        try {
+          const errorJson = JSON.parse(errorText);
+          errorMessage = errorJson.error || errorMessage;
+        } catch {
+          // If not JSON, use status text
+          errorMessage = uploadResponse.statusText || errorMessage;
+        }
+
+        throw new Error(errorMessage);
       }
+
+      const uploadResult: UploadResponse = await uploadResponse.json();
 
       if (uploadResult.success && uploadResult.data) {
         // Update form data with file and URL
         const updatedFormData = {
           ...formData,
-          passportFile: file,
           passportUrl: uploadResult.data.publicUrl,
         };
 
-        setFormData(updatedFormData as FormData);
+        setFormData(updatedFormData);
+        setUploadSuccess(true);
 
         console.log("File uploaded successfully:", {
           filename: uploadResult.data.filename,
@@ -247,6 +255,7 @@ export default function CommScopeRegistrationForm() {
       setFormData((prev) => ({
         ...prev,
         passportFile: null,
+        passportUrl: undefined,
       }));
 
       // Clear file input
@@ -344,7 +353,7 @@ export default function CommScopeRegistrationForm() {
   );
 
   return (
-    <div className={styles.container}>
+    <div className={styles.formContainer}>
       <div className={styles.formWrapper}>
         <div className={styles.formCard}>
           <h1 className={styles.title}>
@@ -583,10 +592,16 @@ export default function CommScopeRegistrationForm() {
                 />
                 <label htmlFor="passport-upload" className={styles.uploadLabel}>
                   <UploadIcon />
-                  <div className={styles.uploadText}>
-                    Click here to upload or drop files here
-                  </div>
-                  <div className={styles.uploadSubtext}>(Jpeg/png/pdf)</div>
+                  {uploadSuccess ? (
+                    "File successfully uploaded, please click here if you want to retry"
+                  ) : (
+                    <>
+                      <div className={styles.uploadText}>
+                        Click here to upload or drop files here
+                      </div>
+                      <div className={styles.uploadSubtext}>(Jpeg/png/pdf)</div>
+                    </>
+                  )}
                 </label>
                 {formData.passportFile && (
                   <div className={styles.fileSelected}>

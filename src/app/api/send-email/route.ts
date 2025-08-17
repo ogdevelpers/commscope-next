@@ -1,4 +1,5 @@
 export const runtime = 'edge'; 
+import { getConfirmationEmailTemplate } from "@/lib/getTemplate";
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";  
 
@@ -12,7 +13,7 @@ export async function POST(request: NextRequest) {
       from: "CommScope <onboarding@resend.dev>",
       to: [email],
       subject: "Thank you for registering!",
-      html: "<div>Thank you for registering</div>",
+      html: getConfirmationEmailTemplate(name),
     });
 
     if (error) {

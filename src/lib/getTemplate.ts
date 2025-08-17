@@ -130,7 +130,7 @@ export const getConfirmationEmailTemplate = (name: string) => {
                                         <td valign="top" class="left-content">
                                             <p
                                                 style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 16.693px; line-height: 1.5;">
-                                                Dear name,</p>
+                                                Dear ${name},</p>
                                             <p
                                                 style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 29px; margin-top: 0;">
                                                 Thank you for registering for the <a href="https://commscope.msdplus.com/CommScope-Technology-Forum-2025/">CommScope Technology Forum 2025</a>. Your registration is now confirmed.</p>

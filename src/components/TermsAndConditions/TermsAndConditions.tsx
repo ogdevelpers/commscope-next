@@ -65,7 +65,7 @@ export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({ classNam
           Please note that visa arrangements are the sole responsibility of the participants. We do not facilitate
           visa applications. For more information and guidance on visa requirements, please{' '}
           <span style={styles.link}>
-            click here
+           <a href="https://www.thaiembassy.com/thailand-visa/thailand-visa-types" target="_blank">click here</a> 
           </span>.
         </p>
       </section>

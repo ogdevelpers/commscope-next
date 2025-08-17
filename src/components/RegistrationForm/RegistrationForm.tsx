@@ -348,7 +348,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            name: formData.firstName,
+            name: formData.fullName,
             email: formData.email,
           }),
         });

@@ -1,0 +1,11 @@
+.thankYouSection{
+    background-color: white;
+}
+
+.container{
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column; 
+    background-color: white;
+    color:black;
+}

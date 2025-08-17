@@ -1,0 +1,66 @@
+/* ThankYouSection.module.css */
+.thankYouContainer {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  line-height: 1.6; 
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #515151;
+
+}
+
+.content {
+  margin-bottom: 30px;
+}
+
+.greeting {
+  margin-bottom: 20px;
+}
+
+.link, .email {
+  color: #515151;
+  text-decoration: underline;
+}
+
+.signature {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.contact {
+  margin-top: 30px;
+  font-style: italic;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.downloadButton,
+.homeButton {
+  padding: 13px;
+  border: none;
+  border-radius: 100px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: white;
+}
+
+.downloadButton {
+  background: linear-gradient(273.36deg, #282AA7 -13.67%, #0071BA 3.49%, #02ADF0 21.2%, #00A9B4 41.91%, #00A562 59.34%, #2BB056 76.51%, #C9DA2C 94.22%, #FDC111 111.29%);
+}
+
+.homeButton {
+  background-color: white;
+  color: #555;
+  border: 1px solid #ccc;
+}

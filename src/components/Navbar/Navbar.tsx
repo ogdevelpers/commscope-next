@@ -36,10 +36,7 @@ export default function Navbar() {
           <li onClick={() => scrollToSection('contact')}>CONTACT</li>
         </ul>
       </section>
-      
-      <section className={styles.navRegister}>
-        <button className={styles.registerButton}></button>
-      </section>
+       
       
       {/* Mobile menu toggle */}
       <div className={styles.menuToggle} onClick={toggleMenu}>

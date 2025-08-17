@@ -10,6 +10,7 @@ interface UserRegistrationData {
   phone?: string;
   company?: string;
   position?: string;
+  nationality?: string;
   passportUrl?: string;
   // Add other fields as needed based on your form
 }
@@ -61,16 +62,15 @@ export async function POST(request: NextRequest) {
 
     // Prepare user data for insertion
     const userData = {
-      first_name: body.firstName,
-      last_name: body.lastName,
+      firstName: body.firstName,
+      lastName: body.lastName,
       email: body.email,
       phone: body.phone || null,
       company: body.company || null,
-      position: body.position || null,
-      passport_url: body.passportUrl || null,
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-      // Add any other fields your table expects
+      nationality: body.nationality || null,
+      passportUrl: body.passportUrl || null,
+      position: body.position || null, 
+      created_at: new Date().toISOString(),  
     };
 
     // Insert user into commscope_users table

@@ -40,6 +40,8 @@ export interface FormData {
   
   /** Consent for photography/video recording ('yes' | 'no' | '') */
   photoConsent: string;
+
+  position: string;
   
   /** Uploaded passport file or null */
   passportUrl:  string;
@@ -145,6 +147,7 @@ export default function CommScopeRegistrationForm() {
     nationality: '',
     dietaryRestrictions: [],
     photoConsent: '',
+    position: '',
     passportUrl: ''
   });
   const [canSubmit, setCanSubmit] = useState(false);

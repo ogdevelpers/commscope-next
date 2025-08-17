@@ -28,12 +28,7 @@ export default function Navbar() {
       </section>
       
       <section className={`${styles.navLinks} ${isMenuOpen ? styles.active : ''}`}>
-        <ul>
-          <li onClick={() => scrollToSection('home')}>HOME</li>
-          <li onClick={() => scrollToSection('about')}>ABOUT THE EVENT</li>
-          <li onClick={() => scrollToSection('agenda')}>AGENDA</li>
-          <li onClick={() => scrollToSection('venue')}>VENUE</li>
-          <li onClick={() => scrollToSection('contact')}>CONTACT</li>
+        <ul> 
         </ul>
       </section>
        

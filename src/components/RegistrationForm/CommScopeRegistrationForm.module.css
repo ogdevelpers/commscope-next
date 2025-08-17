@@ -1,0 +1,349 @@
+/* Reset and base styles */
+.container {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.formWrapper {
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.formWrapper *{
+    color:black;
+}
+
+.formCard {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 2rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.formContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Field groups and layouts */
+.fieldGroup {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.fieldGroupTwo {
+  grid-template-columns: 1fr 1fr;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+/* Input styles */
+.input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  transition: all 0.2s ease-in-out;
+  background-color: white;
+  color: black; /* Changed text color to black */
+}
+
+.input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.input::placeholder {
+  color: #667085; /* Changed placeholder color */
+}
+
+/* Select styles */
+.select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  background-color: white;
+  font-size: 0.875rem;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  color: black; /* Changed select text color to black */
+}
+
+.select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Phone input group */
+.phoneGroup {
+  display: flex;
+}
+
+.countrySelect {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem 0 0 0.375rem;
+  background-color: #f9fafb;
+  font-size: 0.875rem;
+  border-right: 0;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1em 1em;
+  cursor: pointer;
+  color: black; /* Changed text color to black */
+}
+
+.phoneInput {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  background-color: white;
+  border-radius: 0 0.375rem 0.375rem 0;
+  font-size: 0.875rem;
+  transition: all 0.2s ease-in-out;
+  color: black; /* Changed text color to black */
+}
+
+.phoneInput:focus,
+.countrySelect:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Help text */
+.helpText {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+/* Checkbox styles */
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.checkboxItem {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox {
+  height: 1rem;
+  width: 1rem;
+  accent-color: #3b82f6;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.checkboxLabel {
+  font-size: 0.875rem;
+  color: #374151;
+  cursor: pointer;
+}
+
+/* Radio button styles */
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.radioItem {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.radio {
+  height: 1rem;
+  width: 1rem;
+  accent-color: #3b82f6;
+  border: 1px solid #d1d5db;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.radio:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.radioLabel {
+  font-size: 0.875rem;
+  color: #374151;
+  cursor: pointer;
+}
+
+/* File upload styles */
+.uploadArea {
+  border: 2px dashed #d1d5db;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  text-align: center;
+  transition: border-color 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.uploadArea:hover {
+  border-color: #9ca3af;
+}
+
+.uploadLabel {
+  cursor: pointer;
+  display: block;
+}
+
+.uploadIcon {
+  width: 3rem;
+  height: 3rem;
+  color: #9ca3af;
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+.uploadText {
+  color: #3b82f6;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.uploadText:hover {
+  color: #2563eb;
+}
+
+.uploadSubtext {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.fileSelected {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+/* Submit button */
+.submitButton {
+  width: 100%;
+  background: linear-gradient(to right, #4ade80, #3b82f6);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  transform: scale(1);
+}
+
+.submitButton:hover {
+  background: linear-gradient(to right, #22c55e, #2563eb);
+  transform: scale(1.02);
+}
+
+.submitButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.submitButton:active {
+  transform: scale(0.98);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 0.5rem;
+  }
+
+  .formCard {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .fieldGroupTwo {
+    grid-template-columns: 1fr;
+  }
+
+  .phoneGroup {
+    flex-direction: column;
+  }
+
+  .countrySelect {
+    border-radius: 0.375rem 0.375rem 0 0;
+    border-right: 1px solid #d1d5db;
+  }
+
+  .phoneInput {
+    border-radius: 0 0 0.375rem 0.375rem;
+    border-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .formCard {
+    padding: 1rem;
+  }
+
+  .uploadArea {
+    padding: 1rem;
+  }
+
+  .uploadIcon {
+    width: 2rem;
+    height: 2rem;
+  }
+}

@@ -1,0 +1,1 @@
+export const restrictions = ['Vegetarian', 'Halal', 'Gluten-Free', 'Vegan', 'Nuts Free', 'Eggs Free'];

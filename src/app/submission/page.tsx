@@ -2,12 +2,13 @@
 import Footer from "@/components/Footer/Footer";
 
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import styles from './submission.module.css'; 
 import { ThankYouSection } from "@/components/ThankYou/ThankYou"; 
 import Navbar from "@/components/Navbar/Navbar";
 
-export default function Page() {
+
+function SubmissionContent() {
   const searchParams = useSearchParams();
   const [name, setName] = useState('name');
   const [isLoaded, setIsLoaded] = useState(false);
@@ -17,7 +18,6 @@ export default function Page() {
     setName(nameParam);
     setIsLoaded(true);
   }, [searchParams]);
- 
     return (
         <>
             <div className={styles.container}> 
@@ -64,3 +64,21 @@ export default function Page() {
         </>
     );
 }
+
+
+// Main page component with Suspense wrapper
+export default function Page() {
+  return (
+    <Suspense fallback={
+      <div className={styles.container}>
+        <Navbar />
+        <section className={styles.thankYouSection}>
+          <ThankYouSection name="Loading..." />
+        </section>
+      </div>
+    }>
+      <SubmissionContent />
+    </Suspense>
+  );
+}
+ 

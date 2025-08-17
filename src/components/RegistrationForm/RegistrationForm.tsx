@@ -449,23 +449,13 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
               <label className={styles.label}>
                 Phone number
               </label>
-              <div className={styles.phoneGroup}>
-                <select
-                  value={countryCode}
-                  onChange={(e) => setCountryCode(e.target.value)}
-                  className={styles.countrySelect}
-                >
-                  <option value="US">US</option>
-                  <option value="UK">UK</option>
-                  <option value="IN">IN</option>
-                  <option value="CA">CA</option>
-                </select>
+              <div className={styles.phoneGroup}> 
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  placeholder="+1 (555) 000-0000"
+                  placeholder="(555) 000-0000"
                   className={styles.phoneInput}
                 />
               </div>

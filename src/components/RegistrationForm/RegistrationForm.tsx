@@ -47,6 +47,20 @@ export interface FormData {
   passportFile: File | null;
 }
 
+interface UploadResponse {
+  success: boolean;
+  data?: {
+    message: string;
+    filename: string;
+    originalFilename: string;
+    fileType: string;
+    fileSize: number;
+    publicUrl: string;
+    bucketPath: string;
+  };
+  error?: string;
+}
+
 /**
  * Custom change event interface for form inputs
  */
@@ -135,7 +149,7 @@ export default function CommScopeRegistrationForm() {
     passportFile: null
   });
   const [canSubmit, setCanSubmit] = useState(false);
-
+  const [uploadError, setUploadError] = useState('');
   const [countryCode, setCountryCode] = useState('US'); 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -156,10 +170,80 @@ export default function CommScopeRegistrationForm() {
     }));
   }; 
 
-  const handleFileUpload = (e:any) => {
+const handleFileUpload = async (e: any) => {
     const file = e.target.files[0];
     
-  }; 
+    if (!file) return;
+
+    // Validate file type
+    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
+    if (!allowedTypes.includes(file.type)) {
+      setUploadError('Please select a valid file type (JPEG, PNG, or PDF)');
+      return;
+    }
+
+    // Validate file size (10MB limit)
+    const maxSize = 10 * 1024 * 1024;
+    if (file.size > maxSize) {
+      setUploadError('File size must be less than 10MB');
+      return;
+    }
+ 
+    setUploadError(''); 
+
+    try {
+      // Create FormData for file upload
+      const uploadFormData = new FormData();
+      uploadFormData.append('file', file);
+
+      // Upload file to /api/upload
+      const uploadResponse = await fetch('/api/upload', {
+        method: 'POST',
+        body: uploadFormData,
+      });
+
+      const uploadResult: UploadResponse = await uploadResponse.json();
+
+      if (!uploadResponse.ok) {
+        throw new Error(uploadResult.error || 'Upload failed');
+      }
+
+      if (uploadResult.success && uploadResult.data) {
+        // Update form data with file and URL
+        const updatedFormData = {
+          ...formData,
+          passportFile: file,
+          passportUrl: uploadResult.data.publicUrl
+        };
+        
+        setFormData(updatedFormData); 
+        
+        console.log('File uploaded successfully:', {
+          filename: uploadResult.data.filename,
+          publicUrl: uploadResult.data.publicUrl
+        });
+      } else {
+        throw new Error('Upload failed - no data returned');
+      }
+
+    } catch (error) {
+      console.error('Upload error:', error);
+      setUploadError(error instanceof Error ? error.message : 'Upload failed');
+      
+      // Clear file from form data on error
+      setFormData(prev => ({
+        ...prev,
+        passportFile: null,
+        passportUrl: undefined
+      }));
+      
+      // Clear file input
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+    } finally { 
+    }
+  };
 
   const handleSubmit = async () => {
     console.log('Form submitted:', formData);

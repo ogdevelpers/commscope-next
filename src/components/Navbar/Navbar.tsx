@@ -26,19 +26,7 @@ export default function Navbar() {
       <section className={styles.navLogo}>
         <img src='./logo.svg' alt='Commscope' />
       </section>
-      
-      <section className={`${styles.navLinks} ${isMenuOpen ? styles.active : ''}`}>
-        <ul> 
-        </ul>
-      </section>
-       
-      
-      {/* Mobile menu toggle */}
-      <div className={styles.menuToggle} onClick={toggleMenu}>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+    
     </nav>
   );
 }

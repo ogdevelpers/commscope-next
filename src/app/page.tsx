@@ -24,8 +24,9 @@ export default function Home() {
           </section>
 
           <div className={styles.heroNotes}>
-            <div>29th Sept</div>
-            <div>The Peninsula</div>
+            <div className={styles.heroNotes1}><img src='./heroAsset.svg' alt='1' width='24' height='24' />  29th Sept - 2nd Oct, 2025</div>
+
+            <div className={styles.heroNotes2}><img src='./heroAsset2.svg' alt='2' width='24' height='24'/> The Peninsula, Bangkok - Thailand</div>
           </div>
         </div>
       </section>

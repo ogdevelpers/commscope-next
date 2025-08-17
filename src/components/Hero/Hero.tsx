@@ -17,8 +17,9 @@ export default function Hero() {
           </section>
 
           <div className={styles.heroNotes}>
-            <div>29th Sept</div>
-            <div>The Peninsula</div>
+            <div><img src='./heroAsset.svg' alt='1' />  29th Sept - 2nd Oct, 2025</div>
+
+            <div><img src='./heroAsset2.svg' alt='2'/> The Peninsula, Bangkok - Thailand</div>
           </div>
         </div>
       </section>

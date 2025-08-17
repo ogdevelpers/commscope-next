@@ -65,7 +65,7 @@ function SubmissionContent() {
     );
 }
 
- 
+
 export default function Page() {
   return (
     <Suspense fallback={

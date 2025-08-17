@@ -7,6 +7,7 @@ const styles = {
     color: '#333',
     backgroundColor: '#fff',
     marginTop:'80px',
+    padding:"20px",
   },
   title: {
     fontSize: '18px',

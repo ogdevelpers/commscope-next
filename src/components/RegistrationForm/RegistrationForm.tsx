@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import styles from './CommScopeRegistrationForm.module.css';
 import { restrictions } from '@/constants/appConstants';
 import { useRouter } from 'next/navigation';
+import { countries } from '@/constants/countryData';
 export interface FormData {
   /** User's first name */
   firstName: string;
@@ -481,18 +482,14 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
               <label className={styles.label}>
                 City
               </label>
-              <select
+              <input
+                type="text"
                 name="city"
                 value={formData.city}
                 onChange={handleInputChange}
-                className={styles.select}
-              >
-                <option value="">Select City</option>
-                <option value="new-york">New York</option>
-                <option value="london">London</option>
-                <option value="tokyo">Tokyo</option>
-                <option value="sydney">Sydney</option>
-              </select>
+                placeholder="Select City"
+                className={styles.input}
+              />
             </div>
 
             {/* Country */}
@@ -507,11 +504,13 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
                 className={styles.select}
               >
                 <option value="">Select Country of Residence</option>
-                <option value="us">United States</option>
-                <option value="uk">United Kingdom</option>
-                <option value="ca">Canada</option>
-                <option value="au">Australia</option>
-                <option value="in">India</option>
+                {
+                  countries.map((country:string,index:number)=>{
+                    return (
+                      <option value={country} key={index}>{country}</option>
+                    )
+                  })
+                }
               </select>
             </div>
 
@@ -527,11 +526,13 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
                 className={styles.select}
               >
                 <option value="">Select Nationality</option>
-                <option value="american">American</option>
-                <option value="british">British</option>
-                <option value="canadian">Canadian</option>
-                <option value="australian">Australian</option>
-                <option value="indian">Indian</option>
+                {
+                  countries.map((country:string,index:number)=>{
+                    return (
+                      <option value={country} key={index}>{country}</option>
+                    )
+                  })
+                }
               </select>
               <p className={styles.helpText}>
                 This will help especially for F&B & Language purpose

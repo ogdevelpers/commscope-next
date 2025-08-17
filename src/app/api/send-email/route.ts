@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     const { name, email } = await request.json(); 
 
     const { data, error } = await resend.emails.send({
-      from: "CommScope <onboarding@resend.dev>",
+      from: "CommScope <commscope.msdplus.com>",
       to: [email],
       subject: "Thank you for registering!",
       html: getConfirmationEmailTemplate(name),

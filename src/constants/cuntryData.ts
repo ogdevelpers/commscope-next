@@ -74,4 +74,6 @@ export const countryData = {
     nationality: "South African",
     cities: ["Johannesburg", "Cape Town", "Durban", "Pretoria", "Port Elizabeth", "Bloemfontein", "East London", "Nelspruit", "Polokwane", "Kimberley", "Rustenburg", "Witbank", "Pietermaritzburg", "Benoni", "Vereeniging", "Welkom", "Kroonstad", "Klerksdorp", "Potchefstroom", "Carletonville", "Uitenhage", "Springs", "Roodepoort", "Boksburg", "Brakpan", "Alberton", "Randburg", "Midrand", "Centurion", "Vanderbijlpark", "Kempton Park", "Germiston", "Soweto", "Sandton", "Stellenbosch", "Paarl", "George", "Mossel Bay", "Oudtshoorn", "Worcester", "Hermanus", "Knysna", "Plettenberg Bay", "Upington", "Springbok", "Calvinia", "Colesberg", "De Aar", "Beaufort West", "Victoria West"]
   }
-};
+} as const;
+
+export type CountryDataType = typeof countryData;

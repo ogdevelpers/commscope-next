@@ -9,7 +9,7 @@ export const ThankYouSection: React.FC<ThankYouSectionProps> = ({ name }: ThankY
   
   const onDownloadCalendar = ()=>{
     const link = document.createElement("a");
-    link.href = "http://commscope.msdplus.com/invite/Save_the_Date-CommScope_Technology_Forum_2025_New.ics"; 
+    link.href = "https://commscope.msdplus.com/invite/Save_the_Date-CommScope_Technology_Forum_2025_New.ics"; 
     link.download = "Save_the_Date-CommScope_Technology_Forum_2025_New.ics";
     link.click();
   };

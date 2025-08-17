@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import styles from './CommScopeRegistrationForm.module.css';
 import { restrictions } from '@/constants/appConstants';
 /**
@@ -134,8 +134,10 @@ export default function CommScopeRegistrationForm() {
     photoConsent: '',
     passportFile: null
   });
+  const [canSubmit, setCanSubmit] = useState(false);
 
-  const [countryCode, setCountryCode] = useState('US');
+  const [countryCode, setCountryCode] = useState('US'); 
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (e:any) => {
     const { name, value } = e.target;
@@ -156,15 +158,12 @@ export default function CommScopeRegistrationForm() {
 
   const handleFileUpload = (e:any) => {
     const file = e.target.files[0];
-    setFormData(prev => ({
-      ...prev,
-      passportFile: file
-    }));
-  };
+    
+  }; 
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log('Form submitted:', formData);
-    alert('Registration form submitted successfully!');
+    
   };
 
   // Simple upload icon SVG
@@ -419,6 +418,7 @@ export default function CommScopeRegistrationForm() {
               </label>
               <div className={styles.uploadArea}>
                 <input
+                  ref={fileInputRef}
                   type="file"
                   accept=".jpg,.jpeg,.png,.pdf"
                   onChange={handleFileUpload}
@@ -447,6 +447,7 @@ export default function CommScopeRegistrationForm() {
               type="button"
               onClick={handleSubmit}
               className={styles.submitButton}
+              disabled= {!canSubmit}
             >
               SUBMIT
             </button>

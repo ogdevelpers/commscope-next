@@ -1,15 +1,13 @@
 import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
-import styles from './submission.module.css'
-import Hero from "@/components/Hero/Hero";
+import styles from './submission.module.css' 
 import { ThankYouSection } from "@/components/ThankYou/ThankYou";
 
 export default function Page() {
     return (
         <>
             <div className={styles.container}>
-                <Navbar />
-                <Hero />
+                <Navbar /> 
                 <section className={styles.thankYouSection}>
                     < ThankYouSection name={'NAME'} />
                 </section>

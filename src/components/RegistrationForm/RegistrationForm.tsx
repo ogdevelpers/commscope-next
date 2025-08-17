@@ -299,7 +299,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     };
 
     // Submit to API endpoint
-    const submitResponse = await fetch('/api/users', {
+    const submitResponse = await fetch('/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -325,8 +325,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
 
     const submitResult = await submitResponse.json();
 
-    if (submitResult.success && submitResult.data) {
-      // Create full name for redirect
+    if (submitResult.success && submitResult.data) { 
       const fullName = `${formData.firstName.trim()} ${formData.lastName.trim()}`;
       
       console.log('Form submitted successfully:', {
@@ -334,9 +333,8 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         fullName: fullName,
         email: formData.email
       });
-
-      // Using Next.js router for navigation
-      const router = useRouter(); // Make sure to import useRouter
+ 
+      const router = useRouter();  
       router.push({
         pathname: '/submission',
         query: { name: fullName }
@@ -598,9 +596,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
                   <span className={styles.radioLabel}>No</span>
                 </label>
               </div>
-            </div>
-
-            {/* File Upload */}
+            </div> 
             <div className={styles.field}>
               <label className={styles.label}>
                 Attach your passport copy for Hotel & Ticket Bookings
@@ -634,10 +630,11 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
               type="button"
               onClick={handleSubmit}
               className={styles.submitButton}
-              disabled= {!canSubmit}
+              disabled= {!uploadSuccess}
             >
               SUBMIT
             </button>
+            {submitError && submitError}
           </div>
         </div>
       </div>

@@ -48,7 +48,6 @@ function SubmissionContent() {
               <div id="contact" className={styles.contactInfo}>
                 <p className={styles.contactText}>
                   For information on visa eligibility and related details, please <a href='https://www.thaiembassy.com/thailand-visa/thailand-visa-types' target='_blank'>click here! </a>             </p>
-
               </div>
             </div>
           </section>

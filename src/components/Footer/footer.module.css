@@ -15,3 +15,10 @@
     letter-spacing: 0%;
     color: #515151;
 }
+
+@media(max-width:1024px){
+    .footer{
+        flex-direction: column;
+        gap:1rem;
+    }
+}

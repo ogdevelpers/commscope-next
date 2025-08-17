@@ -3,14 +3,11 @@ import { createClient } from '@/lib/supabase/server';
 import { NextRequest, NextResponse } from 'next/server'; 
  
  
-
-// Maximum file size (10MB)
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 
-// Allowed file types
+// Allowed file types - standardized MIME types
 const ALLOWED_TYPES = [
   'image/jpeg',
-  'image/jpg', 
   'image/png',
   'image/gif',
   'image/webp',
@@ -61,9 +58,9 @@ export async function POST(request: NextRequest) {
     const fileArrayBuffer = await file.arrayBuffer();
     const fileBuffer = new Uint8Array(fileArrayBuffer);
 
-    // Upload to Supabase Storage
+    // Upload to Supabase Storage - changed bucket name to 'commscope_data'
     const { data: uploadData, error: uploadError } = await supabase.storage
-      .from('videos')
+      .from('commscope_data') // Changed from 'videos' to 'commscope_data'
       .upload(uniqueFileName, fileBuffer, {
         contentType: file.type,
         duplex: 'half'
@@ -79,31 +76,10 @@ export async function POST(request: NextRequest) {
 
     // Get the public URL of the uploaded file
     const { data: urlData } = supabase.storage
-      .from('videos')
+      .from('commscope_data') // Changed from 'videos' to 'commscope_data'
       .getPublicUrl(uniqueFileName);
 
     const publicUrl = urlData.publicUrl;
-
-    // Optional: Save file metadata to database
-    // You can uncomment and modify this section based on your database schema
-    /*
-    const { data: dbData, error: dbError } = await supabase
-      .from('uploads') // Replace with your table name
-      .insert({
-        filename: uniqueFileName,
-        original_filename: file.name,
-        file_type: file.type,
-        file_size: file.size,
-        public_url: publicUrl,
-        bucket_path: uploadData.path,
-        uploaded_at: new Date().toISOString()
-      });
-
-    if (dbError) {
-      console.error('Database error:', dbError);
-      // Note: File is already uploaded, you might want to handle cleanup
-    }
-    */
 
     return NextResponse.json({
       success: true,

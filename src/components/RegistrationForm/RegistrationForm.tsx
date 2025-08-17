@@ -3,9 +3,6 @@
 import { useRef, useState } from 'react';
 import styles from './CommScopeRegistrationForm.module.css';
 import { restrictions } from '@/constants/appConstants';
-/**
- * Form data interface for CommScope Technology Forum 2025 registration
- */
 export interface FormData {
   /** User's first name */
   firstName: string;
@@ -47,6 +44,7 @@ export interface FormData {
   passportFile: File | null;
 }
 
+ 
 interface UploadResponse {
   success: boolean;
   data?: {
@@ -152,6 +150,7 @@ export default function CommScopeRegistrationForm() {
   const [uploadError, setUploadError] = useState('');
   const [countryCode, setCountryCode] = useState('US'); 
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [uploadSuccess, setUploadSuccess]=  useState(false);
 
   const handleInputChange = (e:any) => {
     const { name, value } = e.target;
@@ -170,80 +169,97 @@ export default function CommScopeRegistrationForm() {
     }));
   }; 
 
-const handleFileUpload = async (e: any) => {
-    const file = e.target.files[0];
-    
-    if (!file) return;
+const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const file = e.target.files?.[0];
+  
+  if (!file) return;
 
-    // Validate file type
-    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
-    if (!allowedTypes.includes(file.type)) {
-      setUploadError('Please select a valid file type (JPEG, PNG, or PDF)');
-      return;
-    }
+  // Clear previous errors
+  setUploadError('');
 
-    // Validate file size (10MB limit)
-    const maxSize = 10 * 1024 * 1024;
-    if (file.size > maxSize) {
-      setUploadError('File size must be less than 10MB');
-      return;
-    }
+  // Validate file type - using standard MIME types
+  const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+  if (!allowedTypes.includes(file.type)) {
+    setUploadError('Please select a valid file type (JPEG, PNG, or PDF)');
+    return;
+  }
+
+  // Validate file size (10MB limit)
+  const maxSize = 10 * 1024 * 1024;
+  if (file.size > maxSize) {
+    setUploadError('File size must be less than 10MB');
+    return;
+  } 
  
-    setUploadError(''); 
 
-    try {
-      // Create FormData for file upload
-      const uploadFormData = new FormData();
-      uploadFormData.append('file', file);
+  try {
+    // Create FormData for file upload
+    const uploadFormData = new FormData();
+    uploadFormData.append('file', file);
 
-      // Upload file to /api/upload
-      const uploadResponse = await fetch('/api/upload', {
-        method: 'POST',
-        body: uploadFormData,
-      });
+    // Upload file to /api/upload
+    const uploadResponse = await fetch('/api/upload', {
+      method: 'POST',
+      body: uploadFormData,
+    });
 
-      const uploadResult: UploadResponse = await uploadResponse.json();
-
-      if (!uploadResponse.ok) {
-        throw new Error(uploadResult.error || 'Upload failed');
-      }
-
-      if (uploadResult.success && uploadResult.data) {
-        // Update form data with file and URL
-        const updatedFormData = {
-          ...formData,
-          passportFile: file,
-          passportUrl: uploadResult.data.publicUrl
-        };
-        
-        setFormData(updatedFormData); 
-        
-        console.log('File uploaded successfully:', {
-          filename: uploadResult.data.filename,
-          publicUrl: uploadResult.data.publicUrl
-        });
-      } else {
-        throw new Error('Upload failed - no data returned');
-      }
-
-    } catch (error) {
-      console.error('Upload error:', error);
-      setUploadError(error instanceof Error ? error.message : 'Upload failed');
+    // Check if response is ok before parsing JSON
+    if (!uploadResponse.ok) {
+      const errorText = await uploadResponse.text();
+      let errorMessage = 'Upload failed';
       
-      // Clear file from form data on error
-      setFormData(prev => ({
-        ...prev,
-        passportFile: null,
-        passportUrl: undefined
-      }));
-      
-      // Clear file input
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
+      try {
+        const errorJson = JSON.parse(errorText);
+        errorMessage = errorJson.error || errorMessage;
+      } catch {
+        // If not JSON, use status text
+        errorMessage = uploadResponse.statusText || errorMessage;
       }
-    } finally { 
+      
+      throw new Error(errorMessage);
     }
-  };
+
+    const uploadResult: UploadResponse = await uploadResponse.json();
+
+    if (uploadResult.success && uploadResult.data) {
+      // Update form data with file and URL
+      const updatedFormData = {
+        ...formData, 
+        passportUrl: uploadResult.data.publicUrl
+      };
+      
+      setFormData(updatedFormData);
+      setUploadSuccess(true);
+      
+      console.log('File uploaded successfully:', {
+        filename: uploadResult.data.filename,
+        publicUrl: uploadResult.data.publicUrl
+      });
+ 
+      
+    } else {
+      throw new Error('Upload failed - no data returned');
+    }
+
+  } catch (error) {
+    console.error('Upload error:', error);
+    setUploadError(error instanceof Error ? error.message : 'Upload failed');
+    
+    // Clear file from form data on error
+    setFormData(prev => ({
+      ...prev,
+      passportFile: null,
+      passportUrl: undefined
+    }));
+    
+    // Clear file input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  } finally {  
+  }
+};
+
 
   const handleSubmit = async () => {
     console.log('Form submitted:', formData);
@@ -258,7 +274,7 @@ const handleFileUpload = async (e: any) => {
   );
 
   return (
-    <div className={styles.container}>
+    <div className={styles.formContainer}>
       <div className={styles.formWrapper}>
         <div className={styles.formCard}>
           <h1 className={styles.title}>
@@ -511,12 +527,14 @@ const handleFileUpload = async (e: any) => {
                 />
                 <label htmlFor="passport-upload" className={styles.uploadLabel}>
                   <UploadIcon />
-                  <div className={styles.uploadText}>
-                    Click here to upload or drop files here
-                  </div>
-                  <div className={styles.uploadSubtext}>
-                    (Jpeg/png/pdf)
-                  </div>
+                 {uploadSuccess ? "File successfully uploaded, please click here if you want to retry"  : ( <>
+                    <div className={styles.uploadText}>
+                      Click here to upload or drop files here
+                    </div>
+                    <div className={styles.uploadSubtext}>
+                      (Jpeg/png/pdf)
+                    </div>
+                  </>)}
                 </label>
                 {formData.passportFile && (
                   <div className={styles.fileSelected}>

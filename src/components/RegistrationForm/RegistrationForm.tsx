@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react';
 import styles from './CommScopeRegistrationForm.module.css';
 import { restrictions } from '@/constants/appConstants';
+import { useRouter } from 'next/router';
 export interface FormData {
   /** User's first name */
   firstName: string;
@@ -41,7 +42,7 @@ export interface FormData {
   photoConsent: string;
   
   /** Uploaded passport file or null */
-  passportFile: File | null;
+  passportUrl:  string;
 }
 
  
@@ -144,13 +145,15 @@ export default function CommScopeRegistrationForm() {
     nationality: '',
     dietaryRestrictions: [],
     photoConsent: '',
-    passportFile: null
+    passportUrl: ''
   });
   const [canSubmit, setCanSubmit] = useState(false);
   const [uploadError, setUploadError] = useState('');
   const [countryCode, setCountryCode] = useState('US'); 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploadSuccess, setUploadSuccess]=  useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e:any) => {
     const { name, value } = e.target;
@@ -247,9 +250,8 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     
     // Clear file from form data on error
     setFormData(prev => ({
-      ...prev,
-      passportFile: null,
-      passportUrl: undefined
+      ...prev, 
+      passportUrl: ''
     }));
     
     // Clear file input
@@ -262,9 +264,96 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
 
 
   const handleSubmit = async () => {
-    console.log('Form submitted:', formData);
-    
-  };
+  console.log('Form submitted:', formData);
+  
+  // Clear previous errors
+  setSubmitError('');
+  
+  // Validate required fields
+  if (!formData.firstName?.trim() || !formData.lastName?.trim() || !formData.email?.trim()) {
+    setSubmitError('Please fill in all required fields');
+    return;
+  }
+  
+  // Validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(formData.email)) {
+    setSubmitError('Please enter a valid email address');
+    return;
+  }
+  
+  // Set loading state
+  setIsSubmitting(true);
+
+  try {
+    // Prepare data for API submission
+    const submissionData = {
+      firstName: formData.firstName.trim(),
+      lastName: formData.lastName.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone?.trim() || '',
+      company: formData.company?.trim() || '',
+      nationality: formData.nationality?.trim() || '',
+      dietaryRestrictions: formData.dietaryRestrictions , 
+      passportUrl: formData.passportUrl || '',
+    };
+
+    // Submit to API endpoint
+    const submitResponse = await fetch('/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(submissionData),
+    });
+
+    // Check if response is ok before parsing JSON
+    if (!submitResponse.ok) {
+      const errorText = await submitResponse.text();
+      let errorMessage = 'Submission failed';
+      
+      try {
+        const errorJson = JSON.parse(errorText);
+        errorMessage = errorJson.error || errorMessage;
+      } catch {
+        // If not JSON, use status text
+        errorMessage = submitResponse.statusText || errorMessage;
+      }
+      
+      throw new Error(errorMessage);
+    }
+
+    const submitResult = await submitResponse.json();
+
+    if (submitResult.success && submitResult.data) {
+      // Create full name for redirect
+      const fullName = `${formData.firstName.trim()} ${formData.lastName.trim()}`;
+      
+      console.log('Form submitted successfully:', {
+        userId: submitResult.data.user?.id,
+        fullName: fullName,
+        email: formData.email
+      });
+
+      // Using Next.js router for navigation
+      const router = useRouter(); // Make sure to import useRouter
+      router.push({
+        pathname: '/submission',
+        query: { name: fullName }
+      });
+
+    } else {
+      throw new Error('Submission failed - no data returned');
+    }
+
+  } catch (error) {
+    console.error('Submission error:', error);
+    setSubmitError(error instanceof Error ? error.message : 'Submission failed');
+
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   // Simple upload icon SVG
   const UploadIcon = () => (
@@ -536,11 +625,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
                     </div>
                   </>)}
                 </label>
-                {formData.passportFile && (
-                  <div className={styles.fileSelected}>
-                    Selected: {formData.passportFile.name}
-                  </div>
-                )}
+ 
               </div>
             </div>
 

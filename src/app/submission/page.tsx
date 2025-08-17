@@ -1,15 +1,27 @@
+'use client';
 import Footer from "@/components/Footer/Footer";
-import Navbar from "@/components/Navbar/Navbar";
-import styles from './submission.module.css' 
-import { ThankYouSection } from "@/components/ThankYou/ThankYou";
+
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import styles from './submission.module.css'; 
+import { ThankYouSection } from "@/components/ThankYou/ThankYou"; 
 
 export default function Page() {
+  const searchParams = useSearchParams();
+  const [name, setName] = useState('name');
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const nameParam = searchParams.get('name') || 'Guest';
+    setName(nameParam);
+    setIsLoaded(true);
+  }, [searchParams]);
+ 
     return (
         <>
-            <div className={styles.container}>
-                <Navbar /> 
+            <div className={styles.container}> 
                 <section className={styles.thankYouSection}>
-                    < ThankYouSection name={'NAME'} />
+                    < ThankYouSection name={name} />
                 </section>
                 <section id="venue" className={styles.directionSection}>
                     <section className={styles.directionSectionInner}>

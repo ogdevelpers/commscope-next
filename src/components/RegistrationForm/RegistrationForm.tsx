@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import styles from './CommScopeRegistrationForm.module.css';
 import { restrictions } from '@/constants/appConstants';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 export interface FormData {
   /** User's first name */
   firstName: string;
@@ -40,8 +40,7 @@ export interface FormData {
   
   /** Consent for photography/video recording ('yes' | 'no' | '') */
   photoConsent: string;
-
-  position: string;
+ 
   
   /** Uploaded passport file or null */
   passportUrl:  string;
@@ -146,8 +145,7 @@ export default function CommScopeRegistrationForm() {
     country: '',
     nationality: '',
     dietaryRestrictions: [],
-    photoConsent: '',
-    position: '',
+    photoConsent: '', 
     passportUrl: ''
   });
   const [canSubmit, setCanSubmit] = useState(false);
@@ -157,6 +155,8 @@ export default function CommScopeRegistrationForm() {
   const [uploadSuccess, setUploadSuccess]=  useState(false);
   const [submitError, setSubmitError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+      const router = useRouter();  
 
   const handleInputChange = (e:any) => {
     const { name, value } = e.target;
@@ -293,6 +293,8 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const submissionData = {
       firstName: formData.firstName.trim(),
       lastName: formData.lastName.trim(),
+      fullName: formData.fullName.trim(),
+      jobTitle: formData.jobTitle.trim(),
       email: formData.email.trim(),
       phone: formData.phone?.trim() || '',
       company: formData.company?.trim() || '',
@@ -337,11 +339,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         email: formData.email
       });
  
-      const router = useRouter();  
-      router.push({
-        pathname: '/submission',
-        query: { name: fullName }
-      });
+      router.push(`/submission?name=${encodeURIComponent(fullName)}`);
 
     } else {
       throw new Error('Submission failed - no data returned');

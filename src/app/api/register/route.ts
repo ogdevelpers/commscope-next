@@ -9,7 +9,7 @@ interface UserRegistrationData {
   email: string;
   phone?: string;
   company?: string;
-  position?: string;
+  jobTitle?: string;
   nationality?: string;
   passportUrl?: string;
   // Add other fields as needed based on your form
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
       company: body.company || null,
       nationality: body.nationality || null,
       passportUrl: body.passportUrl || null,
-      position: body.position || null, 
+      jobTitle: body.jobTitle || null, 
       created_at: new Date().toISOString(),  
     };
 

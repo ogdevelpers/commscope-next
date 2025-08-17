@@ -340,6 +340,45 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         email: formData.email
       });
  
+      // After successful registration, send the thank you email
+      try {
+        const emailResponse = await fetch("/api/send-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.firstName,
+            email: formData.email,
+          }),
+        });
+  
+        if (!emailResponse.ok) { 
+          console.warn(
+            "Registration was successful, but the confirmation email could not be sent."
+          );
+        } 
+      } catch (error) {
+        console.log("Failed to send mail")
+      }
+
+      // Reset form or redirect user
+      setFormData({
+        firstName: "",
+        lastName: "",
+        fullName: "",
+        jobTitle: "",
+        company: "",
+        phone: "",
+        email: "",
+        city: "",
+        country: "",
+        nationality: "",
+        dietaryRestrictions: [],
+        photoConsent: "",
+        passportUrl: "",
+      });  
+ 
       router.push(`/submission?name=${encodeURIComponent(fullName)}`);
 
     } else {

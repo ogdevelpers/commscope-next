@@ -6,8 +6,13 @@ import { NextRequest, NextResponse } from 'next/server';
 interface UserRegistrationData {
   firstName: string;
   lastName: string;
+  fullName: string;
   email: string;
   phone?: string;
+  city: string;
+  photoConsent?: string; 
+  dietaryRestrictions : any;
+  country: string;
   company?: string;
   jobTitle?: string;
   nationality?: string;
@@ -64,14 +69,21 @@ export async function POST(request: NextRequest) {
     const userData = {
       firstName: body.firstName,
       lastName: body.lastName,
+      fullName: body.fullName, 
       email: body.email,
       phone: body.phone || null,
+      city: body.city || null, 
+      country: body.country || null,
+      dietaryRestrictions: body.dietaryRestrictions || null, 
       company: body.company || null,
       nationality: body.nationality || null,
       passportUrl: body.passportUrl || null,
+      photoConsent: body.photoConsent || null,
       jobTitle: body.jobTitle || null, 
       created_at: new Date().toISOString(),  
     };
+
+    console.log({userData, body})
 
     // Insert user into commscope_users table
     const { data: insertedUser, error: insertError } = await supabase

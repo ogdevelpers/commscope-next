@@ -281,7 +281,9 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
   }
   
   // Validate required fields
-  if (!formData.firstName?.trim() || !formData.lastName?.trim() || !formData.email?.trim()) {
+  if (!formData.firstName?.trim() || !formData.lastName?.trim() || !formData.email?.trim() || 
+     !formData.city || !formData.phone.trim() ||  !formData.fullName?.trim() || 
+      !formData.jobTitle.trim()|| !formData.nationality  ) {
     setSubmitError('Please fill in all required fields');
     return;
   }
@@ -304,6 +306,8 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
       fullName: formData.fullName.trim(),
       jobTitle: formData.jobTitle.trim(),
       email: formData.email.trim(),
+      city: formData.city, 
+      country: formData.country, 
       phone: formData.phone?.trim() || '',
       company: formData.company?.trim() || '',
       nationality: formData.nationality?.trim() || '',

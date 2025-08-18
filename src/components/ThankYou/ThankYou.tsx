@@ -22,23 +22,23 @@ export const ThankYouSection: React.FC<ThankYouSectionProps> = ({ name }: ThankY
     <div className={styles.thankYouContainer}>
       <h1 className={styles.title}>Thank You for Registering!</h1>
 
-      <div className={styles.content}>
-        <p className={styles.greeting}>Dear {name},</p>
-        <p>
-          Thank you for registering to join the the <span className={styles.link}><a href='https://commscope.msdplus.com/CommScope-Technology-Forum-2025/' target="_blank">CommScope Technology Forum 2025</a></span>. Your registration is now confirmed.
-        </p>
-        <i><p>
-          Note: If you wish to cancel your booking, please inform us immediately at <span className={styles.email}>commscope@msdplus.com</span>.
-        </p></i>
-        <p>
-          The event will take place at <span className={styles.link}> <a href='https://msdplus.com/hotel' target="_blank">The Peninsula, Bangkok</a> </span>, from 29th September to 2nd October 2025.
-        </p>
-        <p>We look forward to welcoming you in Bangkok, Thailand.</p>
-        <p className={styles.signature}>Best Regards,</p>
-        <p className={styles.signature}>The CommScope Team</p>
-        <p className={styles.contact}>For more information, please contact: <span className={styles.email}>commscope@msdplus.com</span></p>
+    <div className={styles.content}>
+      <div className={styles.greeting}>Dear {name},</div>
+      <div>
+        Thank you for registering to join the <span className={styles.link}><a href='https://commscope.msdplus.com/CommScope-Technology-Forum-2025/' target="_blank" rel="noopener noreferrer">CommScope Technology Forum 2025</a></span>. Your registration is now confirmed.
       </div>
-
+      <div style={{ fontStyle: 'italic' }}>
+        Note: If you wish to cancel your booking, please inform us immediately at <span className={styles.email}>commscope@msdplus.com</span>.
+      </div>
+      <div>
+        The event will take place at <span className={styles.link}> <a href='https://msdplus.com/hotel' target="_blank" rel="noopener noreferrer">The Peninsula, Bangkok</a> </span>, from 29th September to 2nd October 2025.
+      </div>
+      <div>We look forward to welcoming you in Bangkok, Thailand.</div>
+      <div>Best Regards,</div>
+      <div className={styles.signature}>The CommScope Team</div>
+      <div className={styles.contact}>For more information, please contact: <span className={styles.email}>commscope@msdplus.com</span></div>
+    </div>
+    
       <div className={styles.buttonContainer}>
         <button className={styles.downloadButton} onClick={onDownloadCalendar}>
           DOWNLOAD CALENDAR TO LINK

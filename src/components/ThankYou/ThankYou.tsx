@@ -25,7 +25,7 @@ export const ThankYouSection: React.FC<ThankYouSectionProps> = ({ name }: ThankY
       <div className={styles.content}>
         <p className={styles.greeting}>Dear {name},</p>
         <p>
-          Thank you for registering for the <span className={styles.link}>CommScope Technology Forum 2025</span>. Your registration is now confirmed.
+          Thank you for registering to join the the <span className={styles.link}><a href='https://commscope.msdplus.com/CommScope-Technology-Forum-2025/' target="_blank">CommScope Technology Forum 2025</a></span>. Your registration is now confirmed.
         </p>
         <i><p>
           Note: If you wish to cancel your booking, please inform us immediately at <span className={styles.email}>commscope@msdplus.com</span>.
@@ -33,7 +33,7 @@ export const ThankYouSection: React.FC<ThankYouSectionProps> = ({ name }: ThankY
         <p>
           The event will take place at <span className={styles.link}> <a href='https://msdplus.com/hotel' target="_blank">The Peninsula, Bangkok</a> </span>, from 29th September to 2nd October 2025.
         </p>
-        <p>We look forward to welcoming you to Bangkok, Thailand.</p>
+        <p>We look forward to welcoming you in Bangkok, Thailand.</p>
         <p className={styles.signature}>Best Regards,</p>
         <p className={styles.signature}>The CommScope Team</p>
         <p className={styles.contact}>For more information, please contact: <span className={styles.email}>commscope@msdplus.com</span></p>

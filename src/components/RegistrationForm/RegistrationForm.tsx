@@ -655,7 +655,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
                 />
                 <label htmlFor="passport-upload" className={styles.uploadLabel}>
                   <UploadIcon />
-                 {uploadSuccess ? "File successfully uploaded, please click here if you want to retry"  : ( <>
+                 {uploadSuccess ? <span>File successfully uploaded, please click here if you want to <u>re-upload</u></span>  : ( <>
                     <div className={styles.uploadText}>
                       Click here to upload or drop files here
                     </div>

@@ -121,7 +121,7 @@ export const getConfirmationEmailTemplate = (name: string) => {
                                                  Dear ${name},</p>
                                              <p
                                                  style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 29px; margin-top: 0;">
-                                                 Thank you for registering for the <a href="https://commscope.msdplus.com/CommScope-Technology-Forum-2025/">CommScope Technology Forum 2025</a>. Your registration is now confirmed.</p>
+                                                 Thank you for registering to join the <a href="https://commscope.msdplus.com/CommScope-Technology-Forum-2025/">CommScope Technology Forum 2025</a>. Your registration is now confirmed.</p>
                                              <p
                                                  style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 16.693px; line-height: 1.5; font-style: italic;">
                                                  <i><strong>Note:</strong>If you wish to cancel your booking, please inform us immediately at <a href="mailto:commscope@msdplus.com">commscope@msdplus.com</a>.</i></p>
@@ -130,7 +130,7 @@ export const getConfirmationEmailTemplate = (name: string) => {
                                                  The event will take place at <a href="https://msdplus.com/hotel">The Peninsula, Bangkok</a>, from <strong>29th September to 2nd October 2025.</strong></p>
                                              <p
                                                  style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 16.693px; line-height: 1.5;">
-                                                 We look forward to welcoming you to <strong>Bangkok, Thailand</strong></p>
+                                                 We look forward to welcoming you in <strong>Bangkok, Thailand</strong></p>
  
                                               <p style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 16.693px; line-height: 1.5;">Best Regards,</p>
                                               <p style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 16.693px; line-height: 1.5;"><strong>The CommScope Team</strong></p>

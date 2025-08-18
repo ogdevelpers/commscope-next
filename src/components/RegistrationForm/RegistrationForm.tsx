@@ -311,6 +311,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
       phone: formData.phone?.trim() || '',
       company: formData.company?.trim() || '',
       nationality: formData.nationality?.trim() || '',
+      photoConsent: formData.photoConsent || '',
       dietaryRestrictions: formData.dietaryRestrictions , 
       passportUrl: formData.passportUrl || '',
     };

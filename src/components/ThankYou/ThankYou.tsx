@@ -27,11 +27,11 @@ export const ThankYouSection: React.FC<ThankYouSectionProps> = ({ name }: ThankY
         <p>
           Thank you for registering for the <span className={styles.link}>CommScope Technology Forum 2025</span>. Your registration is now confirmed.
         </p>
-        <p>
+        <i><p>
           Note: If you wish to cancel your booking, please inform us immediately at <span className={styles.email}>commscope@msdplus.com</span>.
-        </p>
+        </p></i>
         <p>
-          The event will take place at <span className={styles.link}>The Peninsula, Bangkok</span>, from 29th September to 2nd October 2025.
+          The event will take place at <span className={styles.link}> <a href='https://msdplus.com/hotel' target="_blank">The Peninsula, Bangkok</a> </span>, from 29th September to 2nd October 2025.
         </p>
         <p>We look forward to welcoming you to Bangkok, Thailand.</p>
         <p className={styles.signature}>Best Regards,</p>

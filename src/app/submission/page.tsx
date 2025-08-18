@@ -38,7 +38,7 @@ function SubmissionContent() {
                   <p className={styles.venueLocation}>BANGKOK, THAILAND</p>
                 </div>
 
-                <a href="https://www.peninsula.com/en/bangkok/5-star-luxury-hotel-riverside" target="_blank" rel="noopener noreferrer">
+                <a href="https://msdplus.com/hotel" target="_blank" rel="noopener noreferrer">
                   <button className={styles.directionButton}>
                     GET DIRECTION
                   </button>
@@ -47,7 +47,7 @@ function SubmissionContent() {
 
               <div id="contact" className={styles.contactInfo}>
                 <p className={styles.contactText}>
-                  For information on visa eligibility and related details, please <a href='https://www.thaiembassy.com/thailand-visa/thailand-visa-types' target='_blank'>click here! </a>             </p>
+                  For information on visa eligibility and related details, please <a href='https://www.thaiembassy.com/thailand-visa/thailand-visa-types' target='_blank'>click here! </a></p>
               </div>
             </div>
           </section>

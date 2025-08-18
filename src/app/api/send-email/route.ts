@@ -9,6 +9,7 @@ export async function POST(request: NextRequest) {
   try {
     const { name, email } = await request.json();
 
+    // Correct mail format
     const { data, error } = await resend.emails.send({
       from: "mail.commscope.msdplus.com",
       to: [email],

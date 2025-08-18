@@ -1,16 +1,16 @@
-export const runtime = 'edge'; 
+export const runtime = "edge";
 import { getConfirmationEmailTemplate } from "@/lib/getTemplate";
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";  
+import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, email } = await request.json(); 
+    const { name, email } = await request.json();
 
     const { data, error } = await resend.emails.send({
-      from: "CommScope <commscope.msdplus.com>",
+      from: "mail.commscope.msdplus.com",
       to: [email],
       subject: "Thank you for registering!",
       html: getConfirmationEmailTemplate(name),
@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ data });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return NextResponse.json({ error });
   }
 }

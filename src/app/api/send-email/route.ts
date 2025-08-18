@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
 
     // Correct mail format
     const { data, error } = await resend.emails.send({
-      from: "mail.commscope.msdplus.com",
+      from: "mail@mail.commscope.msdplus.com",
       to: [email],
       subject: "Thank you for registering!",
       html: getConfirmationEmailTemplate(name),

@@ -274,11 +274,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
   
   // Clear previous errors
   setSubmitError('');
-
-  if(!uploadSuccess){
-    setSubmitError('Please upload passport file');
-    return;
-  }
+ 
   
   // Validate required fields
   if (!formData.firstName?.trim() || !formData.lastName?.trim() || !formData.email?.trim() || 

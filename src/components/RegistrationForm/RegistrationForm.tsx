@@ -658,15 +658,20 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
                  {uploadSuccess ? <span>File successfully uploaded, please click here if you want to <u>re-upload</u></span>  : ( <>
                     <div className={styles.uploadText}>
                       Click here to upload or drop files here
-                    </div>
+                    </div> 
+
                     <div className={styles.uploadSubtext}>
                       (Jpeg/png/pdf)
                     </div>
+
                   </>)}
                   {isUploading && "Uploading File, please wait"}
                 </label>
- 
+
               </div>
+                                                        <div className={styles.uploadNote}>
+                      NOTE: If you&apos;re unable to upload your passport copy, please email it to: <u><i>commscope@msdplus.com</i></u>
+                     </div>
             </div>
 
             {/* Submit Button */}

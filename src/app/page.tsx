@@ -9,9 +9,9 @@ export default function Home() {
   return (
     <>
     <div className={styles.container}>
-      <Navbar />
+      {/* <Navbar /> */}
       <section id="home" className={styles.heroSection}>
-        <div className={styles.heroContentContainer}>
+        {/* <div className={styles.heroContentContainer}>
           <section className={styles.heroContent1}>
             <div className={styles.heroTitle}>COMMSCOPE</div>
             <div className={styles.heroTitleCaption}>TECHNOLOGY FORUM 2025</div>
@@ -28,12 +28,12 @@ export default function Home() {
 
             <div className={styles.heroNotes2}><img src='./heroAsset2.svg' alt='2' width='24' height='24'/> The Peninsula, Bangkok - Thailand</div>
           </div>
-        </div>
+        </div> */}
       </section>
       
       <section className={styles.registrationSection}>
         <CommScopeRegistrationForm />
-        <TermsAndConditions />
+        {/* <TermsAndConditions /> */}
       </section>
       
       <Footer />

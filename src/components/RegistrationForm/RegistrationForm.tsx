@@ -7,10 +7,10 @@ import { useRouter } from 'next/navigation';
 import { countries } from '@/constants/countryData';
 export interface FormData {
   /** User's first name */
-  firstName: string;
+  // firstName: string;
   
   /** User's last name */
-  lastName: string;
+  // lastName: string;
   
   /** Full name as it appears on passport */
   fullName: string;
@@ -28,23 +28,23 @@ export interface FormData {
   email: string;
   
   /** City of residence */
-  city: string;
+  // city: string;
   
   /** Country of residence */
-  country: string;
+  // country: string;
   
   /** User's nationality */
-  nationality: string;
+  // nationality: string;
   
   /** Array of dietary restrictions */
-  dietaryRestrictions: string[];
+  // dietaryRestrictions: string[];
   
   /** Consent for photography/video recording ('yes' | 'no' | '') */
-  photoConsent: string;
+  // photoConsent: string;
  
   
   /** Uploaded passport file or null */
-  passportUrl:  string;
+  // passportUrl:  string;
 }
 
  
@@ -98,18 +98,18 @@ export type PhotoConsent = 'yes' | 'no' | '';
  * Form validation errors interface
  */
 export interface FormErrors {
-  firstName?: string;
-  lastName?: string;
+  // firstName?: string;
+  // lastName?: string;
   fullName?: string;
   jobTitle?: string;
   company?: string;
   phone?: string;
   email?: string;
-  city?: string;
-  country?: string;
-  nationality?: string;
-  photoConsent?: string;
-  passportFile?: string;
+  // city?: string;
+  // country?: string;
+  // nationality?: string;
+  // photoConsent?: string;
+  // passportFile?: string;
 }
 
 /**
@@ -135,19 +135,19 @@ export interface CommScopeRegistrationFormProps {
 
 export default function CommScopeRegistrationForm() {
   const [formData, setFormData] = useState<FormData>({
-    firstName: '',
-    lastName: '',
+    // firstName: '',
+    // lastName: '',
     fullName: '',
     jobTitle: '',
     company: '',
     phone: '',
     email: '',
-    city: '',
-    country: '',
-    nationality: '',
-    dietaryRestrictions: [],
-    photoConsent: '', 
-    passportUrl: ''
+    // city: '',
+    // country: '',
+    // nationality: '',
+    // dietaryRestrictions: [],
+    // photoConsent: '', 
+    // passportUrl: ''
   });
   const [canSubmit, setCanSubmit] = useState(false);
   const [uploadError, setUploadError] = useState(''); 
@@ -277,9 +277,8 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
  
   
   // Validate required fields
-  if (!formData.firstName?.trim() || !formData.lastName?.trim() || !formData.email?.trim() || 
-     !formData.city || !formData.phone.trim() ||  !formData.fullName?.trim() || 
-      !formData.jobTitle.trim()|| !formData.nationality  ) {
+  if (!formData.email?.trim() || !formData.phone.trim() ||  !formData.fullName?.trim() || 
+      !formData.jobTitle.trim()) {
     setSubmitError('Please fill in all required fields');
     return;
   }
@@ -297,19 +296,19 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
   try {
     // Prepare data for API submission
     const submissionData = {
-      firstName: formData.firstName.trim(),
-      lastName: formData.lastName.trim(),
+      // firstName: formData.firstName.trim(),
+      // lastName: formData.lastName.trim(),
       fullName: formData.fullName.trim(),
       jobTitle: formData.jobTitle.trim(),
       email: formData.email.trim(),
-      city: formData.city, 
-      country: formData.country, 
+      // city: formData.city, 
+      // country: formData.country, 
       phone: formData.phone?.trim() || '',
       company: formData.company?.trim() || '',
-      nationality: formData.nationality?.trim() || '',
-      photoConsent: formData.photoConsent || '',
-      dietaryRestrictions: formData.dietaryRestrictions , 
-      passportUrl: formData.passportUrl || '',
+      // nationality: formData.nationality?.trim() || '',
+      // photoConsent: formData.photoConsent || '',
+      // dietaryRestrictions: formData.dietaryRestrictions , 
+      // passportUrl: formData.passportUrl || '',
     };
 
     // Submit to API endpoint
@@ -340,7 +339,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const submitResult = await submitResponse.json();
 
     if (submitResult.success && submitResult.data) { 
-      const fullName = `${formData.firstName.trim()} ${formData.lastName.trim()}`;
+      const fullName = `${formData.fullName.trim()}}`;
       
       console.log('Form submitted successfully:', {
         userId: submitResult.data.user?.id,
@@ -372,19 +371,19 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
 
       // Reset form or redirect user
       setFormData({
-        firstName: "",
-        lastName: "",
+        // firstName: "",
+        // lastName: "",
         fullName: "",
         jobTitle: "",
         company: "",
         phone: "",
         email: "",
-        city: "",
-        country: "",
-        nationality: "",
-        dietaryRestrictions: [],
-        photoConsent: "",
-        passportUrl: "",
+        // city: "",
+        // country: "",
+        // nationality: "",
+        // dietaryRestrictions: [],
+        // photoConsent: "",
+        // passportUrl: "",
       });  
  
       router.push(`/submission?name=${encodeURIComponent(fullName)}`);
@@ -418,7 +417,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
           </h1>
           
           <div className={styles.formContent}>
-            <div className={`${styles.fieldGroup} ${styles.fieldGroupTwo}`}>
+            {/* <div className={`${styles.fieldGroup} ${styles.fieldGroupTwo}`}>
               <div className={styles.field}>
                 <label className={styles.label}>
                   First Name
@@ -445,12 +444,12 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
                   className={styles.input}
                 />
               </div>
-            </div>
+            </div> */}
 
             {/* Full Name */}
             <div className={styles.field}>
               <label className={styles.label}>
-                Full Name as per Passport
+                Full Name
               </label>
               <input
                 type="text"
@@ -525,7 +524,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
             </div>
 
             {/* City */}
-            <div className={styles.field}>
+            {/* <div className={styles.field}>
               <label className={styles.label}>
                 City
               </label>
@@ -537,10 +536,10 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
                 placeholder="Select City"
                 className={styles.input}
               />
-            </div>
+            </div> */}
 
             {/* Country */}
-            <div className={styles.field}>
+            {/* <div className={styles.field}>
               <label className={styles.label}>
                 Country of Residence
               </label>
@@ -559,10 +558,10 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
                   })
                 }
               </select>
-            </div>
+            </div> */}
 
             {/* Nationality */}
-            <div className={styles.field}>
+            {/* <div className={styles.field}>
               <label className={styles.label}>
                 Nationality
               </label>
@@ -584,10 +583,10 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
               <p className={styles.helpText}>
                 This will help especially for F&B & Language purpose
               </p>
-            </div>
+            </div> */}
 
             {/* Dietary Restrictions */}
-            <div className={styles.field}>
+            {/* <div className={styles.field}>
               <label className={styles.label}>
                 Do you have any dietary restrictions?
               </label>
@@ -604,10 +603,10 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
                   </label>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* Photo Consent */}
-            <div className={styles.field}>
+            {/* <div className={styles.field}>
               <label className={styles.label}>
                 Consent to Photograph & Video Recording during the event
               </label>
@@ -635,8 +634,8 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
                   <span className={styles.radioLabel}>No</span>
                 </label>
               </div>
-            </div> 
-            <div className={styles.field}>
+            </div>  */}
+            {/* <div className={styles.field}>
               <label className={styles.label}>
                 Attach your passport copy for Hotel & Ticket Bookings
               </label>
@@ -664,10 +663,10 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
                   {isUploading && "Uploading File, please wait"}
                 </label>
 
-              </div>
+              </div> */}
                                                         <div className={styles.uploadNote}>
-                      NOTE: If you&apos;re unable to upload your passport copy, please email it to: <u><i>commscope@msdplus.com</i></u>
-                     </div>
+                      {/* NOTE: If you&apos;re unable to upload your passport copy, please email it to: <u><i>commscope@msdplus.com</i></u>
+                     </div> */}
             </div>
 
             {/* Submit Button */}

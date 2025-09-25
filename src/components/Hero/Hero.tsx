@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <>
           <section id="home" className={styles.heroSection}>
-        <div className={styles.heroContentContainer}>
+        {/* <div className={styles.heroContentContainer}>
           <section className={styles.heroContent1}>
             <div className={styles.heroTitle}>COMMSCOPE</div>
             <div className={styles.heroTitleCaption}>TECHNOLOGY FORUM 2025</div>
@@ -21,7 +21,7 @@ export default function Hero() {
 
             <div><img src='./heroAsset2.svg' alt='2'/> The Peninsula, Bangkok - Thailand</div>
           </div>
-        </div>
+        </div> */}
       </section>
     </>
   )

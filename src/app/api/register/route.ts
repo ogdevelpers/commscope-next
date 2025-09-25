@@ -4,19 +4,19 @@ import { NextRequest, NextResponse } from 'next/server';
  
 // Define the expected structure of the request body
 interface UserRegistrationData {
-  firstName: string;
-  lastName: string;
+  // firstName: string;
+  // lastName: string;
   fullName: string;
   email: string;
   phone?: string;
-  city: string;
-  photoConsent?: string; 
-  dietaryRestrictions : any;
-  country: string;
+  // city: string;
+  // photoConsent?: string; 
+  // dietaryRestrictions : any;
+  // country: string;
   company?: string;
   jobTitle?: string;
-  nationality?: string;
-  passportUrl?: string;
+  // nationality?: string;
+  // passportUrl?: string;
   // Add other fields as needed based on your form
 }
 
@@ -26,9 +26,9 @@ export async function POST(request: NextRequest) {
     const body: UserRegistrationData = await request.json();
 
     // Validate required fields
-    if (!body.firstName || !body.lastName || !body.email) {
+    if (!body.fullName|| !body.email) {
       return NextResponse.json(
-        { error: 'Missing required fields: firstName, lastName, and email are required' },
+        { error: 'Missing required fields: fullName, and email are required' },
         { status: 400 }
       );
     }
@@ -44,14 +44,14 @@ export async function POST(request: NextRequest) {
 
     // Check if user already exists
     const { data: existingUser, error: checkError } = await supabase
-      .from('commscope_users')
+      .from('commscope_users_dinner_2025')
       .select('id, email')
       .eq('email', body.email)
       .single();
 
     if (checkError && checkError.code !== 'PGRST116') {
       // PGRST116 is "not found" error, which is expected
-      console.error('Error checking existing user:', checkError);
+      console.log('Error checking existing user:', checkError);
       return NextResponse.json(
         { error: 'Database error while checking user' },
         { status: 500 }
@@ -67,18 +67,18 @@ export async function POST(request: NextRequest) {
 
     // Prepare user data for insertion
     const userData = {
-      firstName: body.firstName,
-      lastName: body.lastName,
+      // firstName: body.firstName,
+      // lastName: body.lastName,
       fullName: body.fullName, 
       email: body.email,
       phone: body.phone || null,
-      city: body.city || null, 
-      country: body.country || null,
-      dietaryRestrictions: body.dietaryRestrictions || null, 
+      // city: body.city || null, 
+      // country: body.country || null,
+      // dietaryRestrictions: body.dietaryRestrictions || null, 
       company: body.company || null,
-      nationality: body.nationality || null,
-      passportUrl: body.passportUrl || null,
-      photoConsent: body.photoConsent || null,
+      // nationality: body.nationality || null,
+      // passportUrl: body.passportUrl || null,
+      // photoConsent: body.photoConsent || null,
       jobTitle: body.jobTitle || null, 
       created_at: new Date().toISOString(),  
     };
@@ -87,12 +87,13 @@ export async function POST(request: NextRequest) {
 
     // Insert user into commscope_users table
     const { data: insertedUser, error: insertError } = await supabase
-      .from('commscope_users')
+      .from('commscope_users_dinner_2025')
       .insert([userData])
       .select()
       .single();
 
     if (insertError) {
+      console.log({insertError})
       console.error('Error inserting user:', insertError);
       
       // Handle specific database errors
@@ -116,11 +117,12 @@ export async function POST(request: NextRequest) {
         message: 'Successfully registered user',
         user: {
           id: insertedUser.id,
-          firstName: insertedUser.first_name,
-          lastName: insertedUser.last_name,
+          // firstName: insertedUser.first_name,
+          // lastName: insertedUser.last_name,
+          fullName: insertedUser.fullName,
           email: insertedUser.email,
           company: insertedUser.company,
-          position: insertedUser.position,
+          jobTitle: insertedUser.jobTitle,
           createdAt: insertedUser.created_at
         }
       }
@@ -154,8 +156,8 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get('limit') || '10');
 
     let query = supabase
-      .from('commscope_users')
-      .select('id, first_name, last_name, email, company, position, created_at');
+      .from('commscope_users_dinner_2025')
+      .select('id, fullName, email, company, position, created_at');
 
     // Filter by email if provided
     if (email) {

@@ -167,14 +167,14 @@ export default function CommScopeRegistrationForm() {
     }));
   };
 
-  const handleDietaryChange = (restriction:any) => {
-    setFormData(prev => ({
-      ...prev,
-      dietaryRestrictions: prev.dietaryRestrictions.includes(restriction)
-        ? prev.dietaryRestrictions.filter(r => r !== restriction)
-        : [...prev.dietaryRestrictions, restriction]
-    }));
-  }; 
+  // const handleDietaryChange = (restriction:any) => {
+  //   setFormData(prev => ({
+  //     ...prev,
+  //     dietaryRestrictions: prev.dietaryRestrictions.includes(restriction)
+  //       ? prev.dietaryRestrictions.filter(r => r !== restriction)
+  //       : [...prev.dietaryRestrictions, restriction]
+  //   }));
+  // }; 
 
 const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
   const file = e.target.files?.[0];

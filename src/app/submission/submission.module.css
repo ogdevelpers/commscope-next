@@ -16,9 +16,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    min-height: 512px;
+    min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 60px;
     position: relative;
 }
@@ -46,9 +47,12 @@
     position: relative;
     z-index: 2;
     width: 100%;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
 }
 
 .venueCard {
@@ -63,23 +67,25 @@
 
 .venueHeader {
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .venueLabel {
     color: #ffffff;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 300;
     letter-spacing: 2px;
     text-transform: uppercase;
 }
 
 .venueInfo {
     margin-bottom: 30px;
+    text-align: center;
 }
 
 .venueTitle {
     color: #ffffff;
-    font-size: 3.5rem;
+    font-size: 32px;
     font-weight: 700;
     line-height: 1.1;
     margin: 0 0 8px 0;
@@ -113,6 +119,13 @@
 .directionButton:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.directionButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
 
 .contactInfo {
@@ -209,11 +222,12 @@
 @media (max-width: 768px) {
     .directionSection {
         padding: 30px 20px;
-        min-height: 600px;
+        min-height: 100vh;
     }
     
     .directionContainer {
-        gap: 40px;
+        gap: 30px;
+        max-width: 100%;
     }
     
     .venueCard {

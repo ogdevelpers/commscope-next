@@ -5,10 +5,10 @@ export default function Hero() {
     <>
           <section id="home" className={styles.heroSection}>
             <div>
-              <img width="100%" src='/registration_banner.svg' alt='1' />
+              <img width="100%" style={{margin: "-5px"}} src='/registration_banner.svg' alt='1' />
             </div>
             <div>
-              <img width="100%" src='/registration_band.svg' alt='2' />
+              <img width="100%" style={{margin: "0px"}} src='/registration_band.svg' alt='2' />
             </div>
         {/* <div className={styles.heroContentContainer}>
           <section className={styles.heroContent1}>

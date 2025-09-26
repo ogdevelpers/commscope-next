@@ -34,16 +34,18 @@ function SubmissionContent() {
                 </div>
 
                 <div className={styles.venueInfo}>
-                  <h2 className={styles.venueTitle}>THE PENINSULA</h2>
-                  <p className={styles.venueLocation}>BANGKOK, THAILAND</p>
+                  <h2 className={styles.venueTitle}>Cé La Vi </h2>
+                  <p className={styles.venueLocation}>Dubai</p>
                 </div>
 
-                <a href="https://www.google.com/maps/dir/C%C3%89+LA+VI,+Tower+2+-+Level+54,+Address+Sky+View+Hotel+-+Sheikh+Mohammed+bin+Rashid+Blvd+-+Dubai+-+United+Arab+Emirates/''/@25.202026,55.2706755,15z/data=!4m13!4m12!1m5!1m1!1s0x3e5f4332316a067d:0x8191c3616de13503!2m2!1d55.2706755!2d25.202026!1m5!1m1!1s0x3e5f4332316a067d:0x8191c3616de13503!2m2!1d55.2706755!2d25.202026?entry=ttu&g_ep=EgoyMDI1MDkyMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
-                  {/* <button className={styles.directionButton}>
-                    GET DIRECTION
-                  </button> */}
-                  <img src='/direction_thank_you.svg' alt='direction' />
-                </a>
+                <div className={styles.directionButtonContainer}>
+                  <a href="https://www.google.com/maps/dir/C%C3%89+LA+VI,+Tower+2+-+Level+54,+Address+Sky+View+Hotel+-+Sheikh+Mohammed+bin+Rashid+Blvd+-+Dubai+-+United+Arab+Emirates/''/@25.202026,55.2706755,15z/data=!4m13!4m12!1m5!1m1!1s0x3e5f4332316a067d:0x8191c3616de13503!2m2!1d55.2706755!2d25.202026!1m5!1m1!1s0x3e5f4332316a067d:0x8191c3616de13503!2m2!1d55.2706755!2d25.202026?entry=ttu&g_ep=EgoyMDI1MDkyMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
+                    {/* <button className={styles.directionButton}>
+                      GET DIRECTION
+                    </button> */}
+                    <img src='/direction_thank_you.svg' alt='direction' />
+                  </a>
+                </div>
               </div>
 
               {/* <div id="contact" className={styles.contactInfo}>

@@ -4,6 +4,12 @@ export default function Hero() {
   return (
     <>
           <section id="home" className={styles.heroSection}>
+            <div>
+              <img width="100%" src='/registration_banner.svg' alt='1' />
+            </div>
+            <div>
+              <img width="100%" src='/registration_band.svg' alt='2' />
+            </div>
         {/* <div className={styles.heroContentContainer}>
           <section className={styles.heroContent1}>
             <div className={styles.heroTitle}>COMMSCOPE</div>

@@ -6,14 +6,17 @@ import { restrictions } from '@/constants/appConstants';
 import { useRouter } from 'next/navigation';
 import { countries } from '@/constants/countryData';
 export interface FormData {
+  /** Will the user be able to attend? */
+  willAttend: string;
+  
   /** User's first name */
-  // firstName: string;
+  firstName: string;
   
   /** User's last name */
-  // lastName: string;
+  lastName: string;
   
   /** Full name as it appears on passport */
-  fullName: string;
+  // fullName: string;
   
   /** User's job title */
   jobTitle: string;
@@ -98,9 +101,10 @@ export type PhotoConsent = 'yes' | 'no' | '';
  * Form validation errors interface
  */
 export interface FormErrors {
-  // firstName?: string;
-  // lastName?: string;
-  fullName?: string;
+  willAttend?: string;
+  firstName?: string;
+  lastName?: string;
+  // fullName?: string;
   jobTitle?: string;
   company?: string;
   phone?: string;
@@ -135,9 +139,10 @@ export interface CommScopeRegistrationFormProps {
 
 export default function CommScopeRegistrationForm() {
   const [formData, setFormData] = useState<FormData>({
-    // firstName: '',
-    // lastName: '',
-    fullName: '',
+    willAttend: '',
+    firstName: '',
+    lastName: '',
+    // fullName: '',
     jobTitle: '',
     company: '',
     phone: '',
@@ -277,8 +282,8 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
  
   
   // Validate required fields
-  if (!formData.email?.trim() || !formData.phone.trim() ||  !formData.fullName?.trim() || 
-      !formData.jobTitle.trim()) {
+  if (!formData.willAttend || !formData.firstName?.trim() || !formData.lastName?.trim() || 
+      !formData.email?.trim() || !formData.phone.trim() || !formData.jobTitle.trim()) {
     setSubmitError('Please fill in all required fields');
     return;
   }
@@ -296,9 +301,10 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
   try {
     // Prepare data for API submission
     const submissionData = {
-      // firstName: formData.firstName.trim(),
-      // lastName: formData.lastName.trim(),
-      fullName: formData.fullName.trim(),
+      willAttend: formData.willAttend,
+      firstName: formData.firstName.trim(),
+      lastName: formData.lastName.trim(),
+      // fullName: formData.fullName.trim(),
       jobTitle: formData.jobTitle.trim(),
       email: formData.email.trim(),
       // city: formData.city, 
@@ -339,7 +345,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const submitResult = await submitResponse.json();
 
     if (submitResult.success && submitResult.data) { 
-      const fullName = `${formData.fullName.trim()}}`;
+      const fullName = `${formData.firstName.trim()} ${formData.lastName.trim()}`;
       
       console.log('Form submitted successfully:', {
         userId: submitResult.data.user?.id,
@@ -355,7 +361,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            name: formData.fullName,
+            name: formData.firstName + ' ' + formData.lastName,
             email: formData.email,
           }),
         });
@@ -371,9 +377,10 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
 
       // Reset form or redirect user
       setFormData({
-        // firstName: "",
-        // lastName: "",
-        fullName: "",
+        willAttend: "",
+        firstName: "",
+        lastName: "",
+        // fullName: "",
         jobTitle: "",
         company: "",
         phone: "",
@@ -413,11 +420,42 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
       <div className={styles.formWrapper}>
         <div className={styles.formCard}>
           <h1 className={styles.title}>
-            Register Now for CommScope Technology Forum 2025
+          CommScope Social Dinner 2025 - Registration
           </h1>
           
           <div className={styles.formContent}>
-            {/* <div className={`${styles.fieldGroup} ${styles.fieldGroupTwo}`}>
+            {/* Attendance Question */}
+            <div className={styles.field}>
+              <label className={styles.label}>
+                Will you be able to attend? <span className={styles.required}>*</span>
+              </label>
+              <div className={styles.radioGroup}>
+                <label className={styles.radioLabel}>
+                  <input
+                    type="radio"
+                    name="willAttend"
+                    value="yes"
+                    checked={formData.willAttend === 'yes'}
+                    onChange={handleInputChange}
+                    className={styles.radioInput}
+                  />
+                  <span className={styles.radioText}>Yes</span>
+                </label>
+                <label className={styles.radioLabel}>
+                  <input
+                    type="radio"
+                    name="willAttend"
+                    value="no"
+                    checked={formData.willAttend === 'no'}
+                    onChange={handleInputChange}
+                    className={styles.radioInput}
+                  />
+                  <span className={styles.radioText}>No</span>
+                </label>
+              </div>
+            </div>
+
+            <div className={`${styles.fieldGroup} ${styles.fieldGroupTwo}`}>
               <div className={styles.field}>
                 <label className={styles.label}>
                   First Name
@@ -444,10 +482,10 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
                   className={styles.input}
                 />
               </div>
-            </div> */}
+            </div>
 
             {/* Full Name */}
-            <div className={styles.field}>
+            {/* <div className={styles.field}>
               <label className={styles.label}>
                 Full Name
               </label>
@@ -459,7 +497,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
                 placeholder="E.g. John Doe"
                 className={styles.input}
               />
-            </div>
+            </div> */}
 
             {/* Job Title */}
             <div className={styles.field}>
@@ -677,7 +715,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
             >
               SUBMIT
             </button>
-            {submitError && submitError}
+            <p style={{color: 'red'}}>{submitError && submitError}</p>
           </div>
         </div>
       </div>

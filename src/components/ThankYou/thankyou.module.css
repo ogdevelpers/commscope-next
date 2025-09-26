@@ -7,11 +7,15 @@
   line-height: 1.6; 
 }
 
+.greeting{
+  color: white;
+}
+
 .title {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #515151;
+  color: white;
 
 }
 
@@ -30,7 +34,8 @@
 }
 
 .signature {
-  font-weight: bold; 
+  font-weight: normal; 
+  color: white;
 }
 
 .contact { 

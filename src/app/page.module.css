@@ -7,16 +7,12 @@
 }
 
 .heroSection {
-    background-image: url('/combine_image_banner.svg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: 420px;
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 0.5rem;
-    color: white;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    background-color: white;
 }
 
 .heroContentContainer {
@@ -114,13 +110,13 @@
 
 
 @media(max-width:768px) {
-    .heroSection {
+    /* .heroSection {
         background-image: url('/landing_bg_mobile.png');
         align-items: flex-end;
         padding-bottom: 3rem;
         padding-left:2rem;
         justify-content: flex-start;
-    }
+    } */
 
     .heroContentContainer {
         align-items: flex-start;

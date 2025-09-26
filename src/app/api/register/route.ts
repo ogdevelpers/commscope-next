@@ -4,9 +4,10 @@ import { NextRequest, NextResponse } from 'next/server';
  
 // Define the expected structure of the request body
 interface UserRegistrationData {
-  // firstName: string;
-  // lastName: string;
-  fullName: string;
+  willAttend: string;
+  firstName: string;
+  lastName: string;
+  // fullName: string;
   email: string;
   phone?: string;
   // city: string;
@@ -26,9 +27,9 @@ export async function POST(request: NextRequest) {
     const body: UserRegistrationData = await request.json();
 
     // Validate required fields
-    if (!body.fullName|| !body.email) {
+    if (!body.willAttend || !body.firstName|| !body.lastName|| !body.email) {
       return NextResponse.json(
-        { error: 'Missing required fields: fullName, and email are required' },
+        { error: 'Missing required fields: willAttend, firstName, lastName, and email are required' },
         { status: 400 }
       );
     }
@@ -67,9 +68,10 @@ export async function POST(request: NextRequest) {
 
     // Prepare user data for insertion
     const userData = {
-      // firstName: body.firstName,
-      // lastName: body.lastName,
-      fullName: body.fullName, 
+      willAttend: body.willAttend,
+      firstName: body.firstName,
+      lastName: body.lastName,
+      // fullName: body.fullName, 
       email: body.email,
       phone: body.phone || null,
       // city: body.city || null, 
@@ -117,9 +119,10 @@ export async function POST(request: NextRequest) {
         message: 'Successfully registered user',
         user: {
           id: insertedUser.id,
-          // firstName: insertedUser.first_name,
-          // lastName: insertedUser.last_name,
-          fullName: insertedUser.fullName,
+          willAttend: insertedUser.willAttend,
+          firstName: insertedUser.first_name,
+          lastName: insertedUser.last_name,
+          // fullName: insertedUser.fullName,
           email: insertedUser.email,
           company: insertedUser.company,
           jobTitle: insertedUser.jobTitle,
@@ -157,7 +160,7 @@ export async function GET(request: NextRequest) {
 
     let query = supabase
       .from('commscope_users_dinner_2025')
-      .select('id, fullName, email, company, position, created_at');
+      .select('id, willAttend, firstName, lastName, email, company, position, created_at');
 
     // Filter by email if provided
     if (email) {

@@ -1,5 +1,5 @@
 .thankYouSection{
-    background-color: white;
+    background-color: black;
 }
 
 .container{
@@ -12,7 +12,7 @@
 
 
 .directionSection {
-    background-image: url('/direction_bg.png');
+    background-image: url('/registration_banner.svg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

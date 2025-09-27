@@ -419,9 +419,13 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     <div className={styles.formContainer}>
       <div className={styles.formWrapper}>
         <div className={styles.formCard}>
-          <h1 className={styles.title}>
-          CommScope Social Dinner 2025 - Registration
-          </h1>
+        {/* <img src="/square.svg" alt="Square decoration" className={styles.titleSquare} /> */}
+          <div className={styles.titleContainer}>
+            <h1 className={styles.title}>
+              CommScope Social Dinner 2025 - Registration
+            </h1>
+            
+          </div>
           
           <div className={styles.formContent}>
             {/* Attendance Question */}
@@ -708,13 +712,16 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
             </div>
 
             {/* Submit Button */}
-            <button
-              type="button"
-              onClick={handleSubmit}
-              className={styles.submitButton} 
-            >
-              SUBMIT
-            </button>
+            <div className={styles.submitButtonContainer}>
+              <button
+                type="button"
+                onClick={handleSubmit}
+                className={styles.submitButton} 
+              >
+                SUBMIT
+              </button>
+              {/* <img src="/sqaure_reverse.svg" alt="Square reverse decoration" className={styles.submitSquare} /> */}
+            </div>
             <p style={{color: 'red'}}>{submitError && submitError}</p>
           </div>
         </div>

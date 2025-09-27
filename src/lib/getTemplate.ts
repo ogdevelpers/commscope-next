@@ -77,7 +77,7 @@ export const getConfirmationEmailTemplate = (name: string) => {
  
          .content-wrapper {
              padding: 40px 40px 20px;
-             background-color: white;
+             background-color: black;
          }
  
          /* Outlook-specific fixes */
@@ -105,7 +105,14 @@ export const getConfirmationEmailTemplate = (name: string) => {
                          style="max-width: 800px; margin: 0 auto; background-color: #ffffff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
                          <tr>
                              <td align="center">
-                                 <img src="https://commscope.msdplus.com/images/Hero_website.png"
+                                 <img src="https://commscope.gitexdinner.msdplus.com/images/banner-image.png"
+                                     alt="CommScope Technology Forum 2025" width="800"
+                                     style="display:block; width:100%; max-width:800px; height:auto; border:0; outline:none; text-decoration:none;">
+                             </td>
+                         </tr>
+                         <tr>
+                             <td align="center">
+                                 <img src="https://commscope.gitexdinner.msdplus.com/images/band-image.png"
                                      alt="CommScope Technology Forum 2025" width="800"
                                      style="display:block; width:100%; max-width:800px; height:auto; border:0; outline:none; text-decoration:none;">
                              </td>
@@ -117,25 +124,16 @@ export const getConfirmationEmailTemplate = (name: string) => {
                                      <tr>
                                          <td valign="top" class="left-content">
                                              <p
-                                                 style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 16.693px; line-height: 1.5;">
+                                                 style="color: white; font-family: Arial, Helvetica, sans-serif; font-size: 16.693px; line-height: 1.5;">
                                                  Dear ${name},</p>
                                              <p
-                                                 style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 29px; margin-top: 0;">
-                                                 Thank you for registering to join the <a href="https://commscope.msdplus.com/CommScope-Technology-Forum-2025/">CommScope Technology Forum 2025</a>. Your registration is now confirmed.</p>
-                                             <p
-                                                 style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 16.693px; line-height: 1.5; font-style: italic;">
-                                                 <i><strong>Note:</strong>If you wish to cancel your booking, please inform us immediately at <a href="mailto:commscope@msdplus.com">commscope@msdplus.com</a>.</i></p>
-                                             <p
-                                                 style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 16.693px; line-height: 1.5;">
-                                                 The event will take place at <a href="https://msdplus.com/hotel">The Peninsula, Bangkok</a>, from <strong>29th September to 2nd October 2025.</strong></p>
-                                             <p
-                                                 style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 16.693px; line-height: 1.5;">
-                                                 We look forward to welcoming you in <strong>Bangkok, Thailand</strong></p>
+                                                 style="color: white; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 29px; margin-top: 0;">
+                                                 We’re pleased to confirm your registration for an evening at the Cé La Vi Club Lounge, Address Sky View Hotel, on Tuesday, 14th October.
+Join us for a relaxed networking dinner with fine food and drinks and connect with fellow professionals from the ICT sector.
+We look forward to your presence at this exclusive gathering.</p>
  
-                                              <p style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 16.693px; line-height: 1.5;">Best Regards,</p>
-                                              <p style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 16.693px; line-height: 1.5;"><strong>The CommScope Team</strong></p>
-                                              <p style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 1.5;">For more information, please contact:  <a href="mailto:commscope@msdplus.com">commscope@msdplus.com</a></p>
-                                              <a href="https://commscope.msdplus.com/invite/Save_the_Date-CommScope_Technology_Forum_2025.ics" class="calendar-button">ADD TO CALENDAR</a>
+                                              <p style="color: white; font-family: Arial, Helvetica, sans-serif; font-size: 16.693px; line-height: 1.5;">Best Regards,</p>
+                                              <p style="color: white; font-family: Arial, Helvetica, sans-serif; font-size: 16.693px; line-height: 1.5;"><strong>The CommScope Team</strong></p>
                                          </td>
                                      </tr>
                                  </table>
@@ -147,7 +145,6 @@ export const getConfirmationEmailTemplate = (name: string) => {
          </table>
      </center>
  </body>
- 
  </html>
   `;
 };

@@ -24,12 +24,28 @@
   padding: 2rem;
 }
 
+.titleContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
 .title {
   font-size: 1.5rem;
   font-weight: 600;
   color: white;
-  margin-bottom: 2rem;
+  margin: 0;
   text-align: center;
+  line-height: 1.2;
+}
+
+.titleSquare {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .formContent {
@@ -323,6 +339,25 @@ background: linear-gradient(90deg, #DAB145 0%, #DAB145 3%, #E7C15C 6%, #EDC967 8
 .submitButton:active {
   transform: scale(0.98);
 }
+
+.submitButtonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  position: relative;
+  width: 100%;
+}
+
+.submitSquare {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
 .container {
   max-width: 400px;
   margin: 0 auto;
@@ -389,6 +424,26 @@ background: linear-gradient(90deg, #DAB145 0%, #DAB145 3%, #E7C15C 6%, #EDC967 8
 
   .title {
     font-size: 1.25rem;
+  }
+
+  .titleContainer {
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .titleSquare {
+    width: 20px;
+    height: 20px;
+    margin-top: 1px;
+  }
+
+  .submitSquare {
+    width: 20px;
+    height: 20px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .fieldGroupTwo {

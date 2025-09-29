@@ -112,7 +112,7 @@ export const getConfirmationEmailTemplate = (name: string) => {
                          </tr>
                          <tr>
                              <td align="center">
-                                 <img src="https://commscope.gitexdinner.msdplus.com/images/band-image.png"
+                                 <img src="https://commscope.gitexdinner.msdplus.com/images/new_band.png"
                                      alt="CommScope Technology Forum 2025" width="800"
                                      style="display:block; width:100%; max-width:800px; height:auto; border:0; outline:none; text-decoration:none;">
                              </td>

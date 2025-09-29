@@ -34,8 +34,8 @@ function SubmissionContent() {
                 </div>
 
                 <div className={styles.venueInfo}>
-                  <h2 className={styles.venueTitle}>Cé La Vi </h2>
-                  <p className={styles.venueLocation}>Dubai</p>
+                  <h2 className={styles.venueTitle}>Cé La Vi Dubai</h2>
+                  {/* <p className={styles.venueLocation}>Dubai</p> */}
                 </div>
 
                 <div className={styles.directionButtonContainer}>
@@ -43,7 +43,7 @@ function SubmissionContent() {
                     {/* <button className={styles.directionButton}>
                       GET DIRECTION
                     </button> */}
-                    <img src='/direction_thank_you.svg' alt='direction' />
+                    <img src='/get-direction-dinner.svg' alt='direction' />
                   </a>
                 </div>
               </div>

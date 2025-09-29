@@ -8,7 +8,7 @@ export default function Hero() {
               <img width="100%" style={{margin: "-5px"}} src='/registration_banner.svg' alt='1' />
             </div>
             <div>
-              <img width="100%" style={{margin: "0px"}} src='/registration_band.svg' alt='2' />
+              <img width="100%" style={{margin: "0px"}} src='/commscope_band.svg' alt='2' />
             </div>
         {/* <div className={styles.heroContentContainer}>
           <section className={styles.heroContent1}>

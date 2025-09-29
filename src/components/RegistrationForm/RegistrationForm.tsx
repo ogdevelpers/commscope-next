@@ -428,36 +428,6 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
           </div>
           
           <div className={styles.formContent}>
-            {/* Attendance Question */}
-            <div className={styles.field}>
-              <label className={styles.label}>
-                Will you be able to attend? <span className={styles.required}>*</span>
-              </label>
-              <div className={styles.radioGroup}>
-                <label className={styles.radioLabel}>
-                  <input
-                    type="radio"
-                    name="willAttend"
-                    value="yes"
-                    checked={formData.willAttend === 'yes'}
-                    onChange={handleInputChange}
-                    className={styles.radioInput}
-                  />
-                  <span className={styles.radioText}>Yes</span>
-                </label>
-                <label className={styles.radioLabel}>
-                  <input
-                    type="radio"
-                    name="willAttend"
-                    value="no"
-                    checked={formData.willAttend === 'no'}
-                    onChange={handleInputChange}
-                    className={styles.radioInput}
-                  />
-                  <span className={styles.radioText}>No</span>
-                </label>
-              </div>
-            </div>
 
             <div className={`${styles.fieldGroup} ${styles.fieldGroupTwo}`}>
               <div className={styles.field}>
@@ -563,6 +533,37 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
                 placeholder="E.g. john@abccorp.com"
                 className={styles.input}
               />
+            </div>
+
+            {/* Attendance Question */}
+            <div className={styles.field}>
+              <label className={styles.label}>
+                Will you be able to attend? <span className={styles.required}>*</span>
+              </label>
+              <div className={styles.radioGroup}>
+                <label className={styles.radioLabel}>
+                  <input
+                    type="radio"
+                    name="willAttend"
+                    value="yes"
+                    checked={formData.willAttend === 'yes'}
+                    onChange={handleInputChange}
+                    className={styles.radioInput}
+                  />
+                  <span className={styles.radioText}>Yes</span>
+                </label>
+                <label className={styles.radioLabel}>
+                  <input
+                    type="radio"
+                    name="willAttend"
+                    value="no"
+                    checked={formData.willAttend === 'no'}
+                    onChange={handleInputChange}
+                    className={styles.radioInput}
+                  />
+                  <span className={styles.radioText}>No</span>
+                </label>
+              </div>
             </div>
 
             {/* City */}
@@ -713,13 +714,14 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
 
             {/* Submit Button */}
             <div className={styles.submitButtonContainer}>
-              <button
+              <img src="/register-now-dinner.svg" alt="registration now"></img>
+              {/* <button
                 type="button"
                 onClick={handleSubmit}
                 className={styles.submitButton} 
-              >
-                SUBMIT
-              </button>
+              > */}
+                {/* SUBMIT
+              </button> */}
               {/* <img src="/sqaure_reverse.svg" alt="Square reverse decoration" className={styles.submitSquare} /> */}
             </div>
             <p style={{color: 'red'}}>{submitError && submitError}</p>

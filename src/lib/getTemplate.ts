@@ -129,7 +129,8 @@ export const getConfirmationEmailTemplate = (name: string) => {
                                              <p
                                                  style="color: white; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 29px; margin-top: 0;">
                                                  We’re pleased to confirm your registration for an evening at the Cé La Vi Club Lounge, Address Sky View Hotel, on Tuesday, 14th October.
-Join us for a relaxed networking dinner with fine food and drinks and connect with fellow professionals from the ICT sector.
+                                                 <br></br><br></br>
+Join us for a relaxed networking dinner with fine food and drinks and connect with fellow professionals from the ICT sector.<br></br><br></br>
 We look forward to your presence at this exclusive gathering.</p>
  
                                               <p style="color: white; font-family: Arial, Helvetica, sans-serif; font-size: 16.693px; line-height: 1.5;">Best Regards,</p>

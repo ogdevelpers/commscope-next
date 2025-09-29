@@ -23,7 +23,7 @@ export const ThankYouSection: React.FC<ThankYouSectionProps> = ({ name }: ThankY
       <h1 className={styles.title}>Thank You for Registering!</h1>
 
     <div className={styles.content}>
-      <div className={styles.greeting}>Dear {name},</div>
+      <div className={styles.greeting}>Dear  {name},</div>
       {/* <div>
         Thank you for registering to join the <span className={styles.link}><a href='https://commscope.msdplus.com/CommScope-Technology-Forum-2025/' target="_blank" rel="noopener noreferrer">CommScope Technology Forum 2025</a></span>. Your registration is now confirmed.
       </div> */}

@@ -714,7 +714,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
 
             {/* Submit Button */}
             <div className={styles.submitButtonContainer}>
-              <img src="/register-now-dinner.svg" alt="registration now"></img>
+              <img style={{cursor: 'pointer'}} onClick={handleSubmit} src="/register-now-dinner.svg" alt="registration now"></img>
               {/* <button
                 type="button"
                 onClick={handleSubmit}

@@ -13,10 +13,10 @@ export const ThankYouSection: React.FC<ThankYouSectionProps> = ({ name }: ThankY
   //   link.download = "Save_the_Date-CommScope_Technology_Forum_2025_New.ics";
   //   link.click();
   // };
-  // const onBackToHome= ()=>{
-  //   window.location.href =
-  //     "https://commscope.msdplus.com/CommScope-Technology-Forum-2025/";
-  // };
+  const onBackToHome= ()=>{
+    window.location.href =
+      "https://commscope.gitexdinner.msdplus.com/commscope-gitexdinner-2025/";
+  };
 
   return (
     <div className={styles.thankYouContainer}>
@@ -34,8 +34,8 @@ export const ThankYouSection: React.FC<ThankYouSectionProps> = ({ name }: ThankY
         The event will take place at <span className={styles.link}> <a href='https://msdplus.com/hotel' target="_blank" rel="noopener noreferrer">The Peninsula, Bangkok</a> </span>, from 29th September to 2nd October 2025.
       </div> */}
       <div style={{color: 'white'}}>
-      We’re pleased to confirm your registration for an evening at the <strong>Cé La Vi Club Lounge, Address Sky View Hotel</strong>, on <strong>Tuesday, 14th October</strong>.<br></br> 
-      Join us for a relaxed networking dinner with fine food and drinks and connect with <strong>fellow professionals from the ICT sector</strong>.<br></br>
+      We’re pleased to confirm your registration for an evening at the <strong>Cé La Vi Club Lounge, Address Sky View Hotel</strong>, on <strong>Tuesday, 14th October</strong>.<br></br><br></br> 
+      Join us for a relaxed networking dinner with fine food and drinks and connect with <strong>fellow professionals from the ICT sector</strong>.<br></br><br></br>
       We look forward to your presence at this exclusive gathering.
       </div>
       <div style={{color: 'white'}}>Best Regards,</div>
@@ -43,14 +43,15 @@ export const ThankYouSection: React.FC<ThankYouSectionProps> = ({ name }: ThankY
       {/* <div className={styles.contact}>For more information, please contact: <span className={styles.email}>commscope@msdplus.com</span></div> */}
     </div>
     
-      {/* <div className={styles.buttonContainer}>
-        <button className={styles.downloadButton} onClick={onDownloadCalendar}>
+      <div className={styles.buttonContainer}>
+        {/* <button className={styles.downloadButton} onClick={onDownloadCalendar}>
           DOWNLOAD CALENDAR TO LINK
-        </button>
-        <button className={styles.homeButton} onClick={onBackToHome}>
+        </button> */}
+        <img src="/go-back-button.svg" style={{cursor: 'pointer'}} width={250} height={100} onClick={onBackToHome} alt="back to home"></img>
+        {/* <button className={styles.homeButton} onClick={onBackToHome}>
           BACK TO HOME
-        </button>
-      </div> */}
+        </button> */}
+      </div>
     </div>
   );
 };

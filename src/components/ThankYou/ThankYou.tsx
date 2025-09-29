@@ -34,7 +34,9 @@ export const ThankYouSection: React.FC<ThankYouSectionProps> = ({ name }: ThankY
         The event will take place at <span className={styles.link}> <a href='https://msdplus.com/hotel' target="_blank" rel="noopener noreferrer">The Peninsula, Bangkok</a> </span>, from 29th September to 2nd October 2025.
       </div> */}
       <div style={{color: 'white'}}>
-      We’re pleased to confirm your registration for an evening at the Cé La Vi Club Lounge, Address Sky View Hotel, on Tuesday, 14th October. Join us for a relaxed networking dinner with fine food and drinks and connect with fellow professionals from the ICT sector. We look forward to your presence at this exclusive gathering.
+      We’re pleased to confirm your registration for an evening at the <strong>Cé La Vi Club Lounge, Address Sky View Hotel</strong>, on <strong>Tuesday, 14th October</strong>.<br></br> 
+      Join us for a relaxed networking dinner with fine food and drinks and connect with <strong>fellow professionals from the ICT sector</strong>.<br></br>
+      We look forward to your presence at this exclusive gathering.
       </div>
       <div style={{color: 'white'}}>Best Regards,</div>
       <div className={styles.signature}>The CommScope Team</div>
